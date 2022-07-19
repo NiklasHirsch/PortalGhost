@@ -7,12 +7,16 @@ using UnityEngine.InputSystem;
 [System.Serializable]
 public class Vector2InputEvent: UnityEvent<float, float> { }
 
+[System.Serializable]
+public class ButtonInputEvent : UnityEvent<float> { }
+
 public class InputController : MonoBehaviour
 {
     Controls controls;
 
     public Vector2InputEvent moveInputEvent;
     public Vector2InputEvent lookInputEvent;
+    public ButtonInputEvent createPortalInputEvent;
 
     private void Awake()
     {
@@ -32,6 +36,9 @@ public class InputController : MonoBehaviour
 
         controls.FreeMoveCamera.Look.performed += OnLookPerformed;
         controls.FreeMoveCamera.Look.canceled += OnLookPerformed;
+
+        controls.FreeMoveCamera.CreatePortal.performed += OnCreatePortalPerformed;
+        controls.FreeMoveCamera.CreatePortal.canceled += OnCreatePortalPerformed;
     }
 
     private void OnMovePerformed(InputAction.CallbackContext context)
@@ -44,5 +51,11 @@ public class InputController : MonoBehaviour
     {
         Vector2 lookInput = context.ReadValue<Vector2>();
         lookInputEvent.Invoke(lookInput.x, lookInput.y);
+    }
+
+    private void OnCreatePortalPerformed(InputAction.CallbackContext context)
+    {
+        var createPortalInput = context.ReadValue<float>();
+        createPortalInputEvent.Invoke(createPortalInput);
     }
 }

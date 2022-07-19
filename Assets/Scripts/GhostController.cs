@@ -14,18 +14,23 @@ public class GhostController : MonoBehaviour
     float horizontal;
     float vertical;
 
+    float create_portal_pressed = 0;
+
     private void Update()
     {
-        float RotationX = horizontalCameraSensitivity * mouseX * Time.deltaTime;
-        float RotationY = verticalCameraSensitivity * mouseY * Time.deltaTime;
+        if(create_portal_pressed < 1)
+        {
+            float RotationX = horizontalCameraSensitivity * mouseX * Time.deltaTime;
+            float RotationY = verticalCameraSensitivity * mouseY * Time.deltaTime;
 
-        Vector3 CameraRotation = transform.rotation.eulerAngles;
-        CameraRotation.x -= RotationY;
-        CameraRotation.y += RotationX;
-        transform.rotation = Quaternion.Euler(CameraRotation);
+            Vector3 CameraRotation = transform.rotation.eulerAngles;
+            CameraRotation.x -= RotationY;
+            CameraRotation.y += RotationX;
+            transform.rotation = Quaternion.Euler(CameraRotation);
 
-        Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+            Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
+            transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        }
     }
 
     public void OnLookInput(float x, float y)
@@ -42,5 +47,12 @@ public class GhostController : MonoBehaviour
         this.horizontal = horizontal;
         
         Debug.Log($"GhostController: MoveInput: {vertical}, {horizontal}");
+    }
+
+    public void OnCreatePortalInput(float create_portal_pressed)
+    {
+        this.create_portal_pressed = create_portal_pressed;
+
+        Debug.Log($"InputController: createPortalInput: {create_portal_pressed}");
     }
 }
