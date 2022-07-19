@@ -1,16 +1,17 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : PortalableObject
+public class GhostController : PortalableObject
 {
-    private CameraMove cameraMove;
+    // Start is called before the first frame update
+    private GhostMovement cameraMove;
 
     protected override void Awake()
     {
         base.Awake();
 
-        cameraMove = GetComponent<CameraMove>();
+        cameraMove = GetComponent<GhostMovement>();
     }
 
     public override void Warp()

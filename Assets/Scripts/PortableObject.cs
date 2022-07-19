@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ public class PortalableObject : MonoBehaviour
     private GameObject cloneObject;
 
     private int inPortalCount = 0;
-    
+
     private Portal inPortal;
     private Portal outPortal;
 
@@ -37,12 +37,12 @@ public class PortalableObject : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(inPortal == null || outPortal == null)
+        if (inPortal == null || outPortal == null)
         {
             return;
         }
 
-        if(cloneObject.activeSelf && inPortal.IsPlaced && outPortal.IsPlaced)
+        if (cloneObject.activeSelf && inPortal.IsPlaced && outPortal.IsPlaced)
         {
             var inTransform = inPortal.transform;
             var outTransform = outPortal.transform;
