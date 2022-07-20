@@ -79,6 +79,7 @@ public class Portal : MonoBehaviour
 
     public bool PlacePortal(Collider wallCollider, Vector3 pos, Quaternion rot)
     {
+        Debug.Log("WE ARE in PLACE PORTAL");
         testTransform.position = pos;
         testTransform.rotation = rot;
         testTransform.position -= testTransform.forward * 0.001f;
@@ -88,6 +89,7 @@ public class Portal : MonoBehaviour
 
         if (CheckOverlap())
         {
+            Debug.Log("DIIID NOT OVERLAP!");
             this.wallCollider = wallCollider;
             transform.position = testTransform.position;
             transform.rotation = testTransform.rotation;
