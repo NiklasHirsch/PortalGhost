@@ -1,0 +1,118 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "FreeMoveCamera",
+            "id": "99860ce7-1128-41e1-8710-60202a2d6f31",
+            "actions": [
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "ea0c0f59-8122-4e70-8cbb-1992d48e41b9",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "e7bc3e4d-bf92-4897-b274-4ab575f4ced5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "CreatePortal",
+                    "type": "Button",
+                    "id": "a7da14ca-d8cf-4224-acb3-a902fb0b97a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d84337b2-c7ea-4288-bb39-2153c7071855",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "9e4683a1-df0e-4a91-a840-adbd7342b412",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "cd53ea98-67c3-49fa-9f53-371d148e2d31",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a793541e-5c5c-4ab5-a243-d150450dca5c",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "f97b922a-03cc-4f63-8822-a2f07f32d07c",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "31ca5f3d-b0df-49af-88f4-d9a79b3748e1",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "cb2b70f1-1f0e-4341-bf87-81b61e57665c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CreatePortal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
