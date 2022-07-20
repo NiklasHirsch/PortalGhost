@@ -15,6 +15,7 @@ public class GhostController : MonoBehaviour
     float vertical;
 
     float create_portal_pressed = 0;
+    bool portal_wall_exists = false;
 
     private void Update()
     {
@@ -30,6 +31,15 @@ public class GhostController : MonoBehaviour
 
             Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            if (!portal_wall_exists)
+            {
+                GameObject.FindWithTag("PortalWall").transform.position = transform.position - transform.forward;
+                GameObject.FindWithTag("PortalWall").transform.rotation = transform.rotation;
+                // TODO: remove wall again
+            }
         }
     }
 
