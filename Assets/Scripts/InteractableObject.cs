@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 public class InteractableObject : MonoBehaviour
 {
     //basic obj variables
-    private bool isActive = false;
+    public bool isActive = false;
+    public bool isInTheAir = false;
  
     [Header("Shake Settings")]
     public float minimalYitter = -0.05f;
@@ -15,6 +16,7 @@ public class InteractableObject : MonoBehaviour
 
 
     [Header("Hover transition Settings")]
+    public bool floatAtStart = false;
     [SerializeField]
     [Range(0,10)]
     private float hoverLevel = 1;
@@ -25,14 +27,15 @@ public class InteractableObject : MonoBehaviour
     [Header("Push/Pull Settings")]
     [SerializeField]
     [Range(0,4)]
-    private float distance = 0.5f;
+    private float distance = 2f;
 
     public void Start(){
-        floatUp();
+        if(floatAtStart){
+            floatUp();
+        }
     }
 
     public void Update(){
-       push();
     }
 
     public bool getState() {
@@ -49,7 +52,7 @@ public class InteractableObject : MonoBehaviour
 
     public virtual void doAfterFloat(){
          Debug.Log("After");
-         //fallDown();
+         isInTheAir = true;
          isActive = true;
     }
  
@@ -76,6 +79,8 @@ public class InteractableObject : MonoBehaviour
     public virtual void fallDown() {
         Debug.Log("fall down");
         transform.GetComponent<Rigidbody>().isKinematic = false;
+        isInTheAir = false;
+        isActive = false;
     }
 
 
