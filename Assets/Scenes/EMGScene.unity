@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -170,7 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
-  isInTheAir: 0
   minimalYitter: -0.05
   maximalYitter: 0.05
   floatAtStart: 0
@@ -362,7 +361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
-  isInTheAir: 0
   minimalYitter: -0.05
   maximalYitter: 0.05
   floatAtStart: 0
@@ -495,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9199581781560419192, guid: 448a378c58464bb41a2980e13276fe4c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9199581781963410114, guid: 448a378c58464bb41a2980e13276fe4c, type: 3}
       propertyPath: m_RootOrder
@@ -744,7 +742,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
-  isInTheAir: 0
   minimalYitter: -0.02
   maximalYitter: 0.02
   floatAtStart: 0

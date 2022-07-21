@@ -19,12 +19,6 @@ public class GazeController : MonoBehaviour
         {
             GameObject obj = hit.transform.gameObject;
 
-            if (!isInteractableObject(obj))
-            {
-                removeOutline(activeObject);
-                return;
-            }
-
             if (obj != activeObject)
             {
                 if (activeObject != null)
@@ -34,15 +28,20 @@ public class GazeController : MonoBehaviour
                 activeObject = obj;
                 addOutline(obj);
             }
+
+            else if (!isInteractableObject(obj))
+            {
+                removeOutline(activeObject);
+                return;
+            }
+
+            
         }
         else
         {
             removeOutline(activeObject);
             activeObject = null;
             selectedObject.selectedGameObject = null;
-
-            
-            
         }
     }
 
@@ -54,11 +53,6 @@ public class GazeController : MonoBehaviour
             if (outline != null)
             {
                 outline.OutlineWidth = 0f;
-            }
-
-            InteractableObject activeInteractableObject = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
-            if(activeInteractableObject.isActive){
-               activeInteractableObject.fallDown();
             }
         }
     }
@@ -72,12 +66,6 @@ public class GazeController : MonoBehaviour
             {
                 selectedObject.selectedGameObject = myObject;
 
-                InteractableObject activeInteractableObject = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
-
-                if(!activeInteractableObject.isActive){
-                    activeInteractableObject.floatUp();
-                }
-
                 outline.OutlineWidth = 6f;
             }
         }
@@ -85,7 +73,7 @@ public class GazeController : MonoBehaviour
 
     private bool isInteractableObject(GameObject myObject)
     {
-        if (myObject.GetComponent<InteractableObject>() != null && myObject.GetComponent<Outline>() == null)
+        if (myObject != null && myObject.GetComponent<InteractableObject>() != null && myObject.GetComponent<Outline>() == null)
         {
             myObject.AddComponent<Outline>();
             outline.OutlineMode = Outline.Mode.OutlineAll;

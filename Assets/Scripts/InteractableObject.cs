@@ -8,34 +8,41 @@ public class InteractableObject : MonoBehaviour
 {
     //basic obj variables
     public bool isActive = false;
-    public bool isInTheAir = false;
  
     [Header("Shake Settings")]
-    public float minimalYitter = -0.05f;
-    public float maximalYitter = 0.05f;
+    public float minimalYitter = -0.01f;
+    public float maximalYitter = 0.01f;
 
 
     [Header("Hover transition Settings")]
     public bool floatAtStart = false;
     [SerializeField]
-    [Range(0,10)]
-    private float hoverLevel = 1;
+    [Range(0,2)]
+    private float hoverLevel = 0.5f;
     [SerializeField]
-    [Range(0,10)]
-    private float secondTillStabilized = 1;
+    [Range(0,2)]
+    private float secondTillStabilized = 0.2f;
 
     [Header("Push/Pull Settings")]
     [SerializeField]
-    [Range(0,4)]
-    private float distance = 2f;
+    [Range(0,2)]
+    private float distance = 0.2f;
+
+    private Vector3 posAfterFloat;
 
     public void Start(){
-        if(floatAtStart){
+        if (floatAtStart){
             floatUp();
         }
     }
 
     public void Update(){
+        if (isActive) {
+            /*Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+            pos.x = Mathf.Clamp01(pos.x);
+            pos.y = Mathf.Clamp01(pos.y);
+            transform.position = Camera.main.ViewportToWorldPoint(pos);*/
+        }
     }
 
     public bool getState() {
@@ -45,15 +52,23 @@ public class InteractableObject : MonoBehaviour
     public virtual void floatUp() {
         Debug.Log("float up");
 
-        transform.GetComponent<Rigidbody>().isKinematic = true;
-
-        StartCoroutine (MoveOverSeconds (gameObject, new Vector3(transform.position.x, (transform.position.y + hoverLevel), transform.position.z), secondTillStabilized, doAfterFloat));
+        if (!isActive) {
+            transform.GetComponent<Rigidbody>().isKinematic = true;
+            StartCoroutine(MoveOverSeconds(gameObject, new Vector3(transform.position.x, (transform.position.y + hoverLevel), transform.position.z), secondTillStabilized, doAfterFloat));
+        }
     }
 
     public virtual void doAfterFloat(){
-         Debug.Log("After");
-         isInTheAir = true;
-         isActive = true;
+        Debug.Log("After");
+        isActive = true;
+
+
+        posAfterFloat = transform.position;
+        //Vector3 cameraCenter = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, GetComponent<Camera>().nearClipPlane));
+
+        //Vector3 diff = posAfterFloat - cameraCenter;
+
+        //float distanceToObj = Vector3.Distance(cameraCenter, posAfterFloat);
     }
  
 
@@ -78,13 +93,14 @@ public class InteractableObject : MonoBehaviour
 
     public virtual void fallDown() {
         Debug.Log("fall down");
+        StopAllCoroutines();
         transform.GetComponent<Rigidbody>().isKinematic = false;
-        isInTheAir = false;
         isActive = false;
     }
 
 
     public virtual void pull() {
+        Debug.Log("pull");
         if(isActive){
             Debug.Log(gameObject.name + " pulled");
             transform.position = transform.position + Camera.main.transform.forward * distance * Time.deltaTime * -1;
@@ -93,7 +109,8 @@ public class InteractableObject : MonoBehaviour
     }
 
     public virtual void push() {
-        if(isActive){
+        Debug.Log("push");
+        if (isActive){
             Debug.Log(gameObject.name + " pushed");
             transform.position = transform.position + Camera.main.transform.forward * distance * Time.deltaTime;
         }
