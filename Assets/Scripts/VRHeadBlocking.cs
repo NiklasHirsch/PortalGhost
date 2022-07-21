@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Valve.VR;
 
 public class VRHeadBlocking : MonoBehaviour
@@ -13,6 +14,7 @@ public class VRHeadBlocking : MonoBehaviour
     public GameObject player;    
     [SerializeField] bool fadeEnabled = true;
     [SerializeField] Color fadeColor = Color.black;
+    //public Image blackFade;
 
     private int layerMask;
     private Collider[] objs = new Collider[10];
@@ -20,7 +22,7 @@ public class VRHeadBlocking : MonoBehaviour
     private int fadeState = 0;
     private float fadeDuration = .5f;
     private float internalFadeTimer = 0f;    
-    private float backupCap = .2f;
+    private float backupCap = .3f;
     
     private void Start()
     {
@@ -73,15 +75,20 @@ public class VRHeadBlocking : MonoBehaviour
             }
                         
             int hits = DetectHit(transform.position);
-            
+
             // No collision
-            if (hits == 0) prevHeadPos = transform.position;                           
-                
+            if (hits == 0)
+            {
+                prevHeadPos = transform.position;
+                //if (blackFade) { blackFade.GetComponent<Image>().color = new Color32(0, 0, 0, 0); }
+            }
+
             // Collision
-            else {            
+            else
+            {
 
                 // Player pushback
-                bool notCapped = true;       
+                bool notCapped = true;
                 Vector3 headDiff = transform.position - prevHeadPos;
                 if (Mathf.Abs(headDiff.x) > backupCap) {
                     if (headDiff.x > 0) headDiff.x = backupCap;
@@ -97,12 +104,15 @@ public class VRHeadBlocking : MonoBehaviour
                                                  player.transform.position.y,
                                                  player.transform.position.z-headDiff.z);
                 player.transform.SetPositionAndRotation(adjHeadPos, player.transform.rotation);
+                
 
+                //if (blackFade) { blackFade.GetComponent<Image>().color = new Color32(0, 0, 0, 255); }
                 // Trigger fade if enabled
-                if (fadeEnabled && notCapped && fadeState == 0) {                    
+                if (fadeEnabled && notCapped && fadeState == 0)
+                {
                     internalFadeTimer = fadeDuration;
-                    FadeToColor(); 
-                    fadeState = 1;                    
+                    FadeToColor();
+                    fadeState = 1;
                 }
             }
         }
