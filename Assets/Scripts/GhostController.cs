@@ -58,9 +58,11 @@ public class GhostController : MonoBehaviour
     {
         Debug.Log("1: FIRE");
         RaycastHit hit;
-        Physics.Raycast(pos, dir, out hit, distance, layerMask);
+        Physics.Raycast(pos, dir, out hit, distance, ~0);
 
         Debug.Log($"THE COLIDER IS: {hit.collider}");
+
+
 
         if (hit.collider != null)
         {
