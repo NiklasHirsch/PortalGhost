@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    public GameObject pressurePlate;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,21 +16,25 @@ public class PressurePlate : MonoBehaviour
         
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("zero if");
         if (other.tag == "PPKey")
         {
+            Debug.Log("first if");
             float distance = Vector3.Distance(transform.position, other.transform.position);
 
-            if (distance < 0.1f)
+            if (distance < 0.5f)
             {
+                Debug.Log("second if");
                 Rigidbody box = other.GetComponent<Rigidbody>();
                 if (box != null)
                 {
-                    if (box.mass >= 10)
-                    {
-                        pressurePlate.transform.position = new Vector3(pressurePlate.transform.position.x, pressurePlate.transform.position.y - 0.2, pressurePlate.transform.position.z);
-                    }
+                    //if (box.mass >= 10)
+                    //{
+                        Debug.Log("triggered");
+                        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y*0.3f, transform.localScale.z);
+                    //}
                 }
             }
         }
