@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableButton : InteractableObject
+public class InteractablePullable : InteractableObject
 {
 
     public override void floatUp() {
@@ -20,6 +20,4 @@ public class InteractableButton : InteractableObject
     public override void push() {
         
     }
-
-
 }

@@ -22,8 +22,17 @@ public class InteractableObject : MonoBehaviour
     [Range(0,10)]
     private float secondTillStabilized = 1;
 
+    [Header("Push/Pull Settings")]
+    [SerializeField]
+    [Range(0,4)]
+    private float distance = 0.5f;
+
     public void Start(){
         floatUp();
+    }
+
+    public void Update(){
+       push();
     }
 
     public bool getState() {
@@ -38,9 +47,9 @@ public class InteractableObject : MonoBehaviour
         StartCoroutine (MoveOverSeconds (gameObject, new Vector3(transform.position.x, (transform.position.y + hoverLevel), transform.position.z), secondTillStabilized, doAfterFloat));
     }
 
-    public void doAfterFloat(){
+    public virtual void doAfterFloat(){
          Debug.Log("After");
-         fallDown();
+         //fallDown();
          isActive = true;
     }
  
@@ -71,12 +80,17 @@ public class InteractableObject : MonoBehaviour
 
 
     public virtual void pull() {
-        Debug.Log(gameObject.name + " pulled");
+        if(isActive){
+            Debug.Log(gameObject.name + " pulled");
+            transform.position = transform.position + Camera.main.transform.forward * distance * Time.deltaTime * -1;
+        }
+        
     }
 
     public virtual void push() {
-        Debug.Log(gameObject.name + " pushed");
-
-        //transform.forward;
+        if(isActive){
+            Debug.Log(gameObject.name + " pushed");
+            transform.position = transform.position + Camera.main.transform.forward * distance * Time.deltaTime;
+        }
     }
 }
