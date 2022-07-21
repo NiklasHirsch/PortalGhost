@@ -24,7 +24,7 @@ public class GhostController : MonoBehaviour
 
     private void Update()
     {
-        if(create_portal_pressed < 1)
+        if (create_portal_pressed < 1)
         {
             float RotationX = horizontalCameraSensitivity * mouseX * Time.deltaTime;
             float RotationY = verticalCameraSensitivity * mouseY * Time.deltaTime;
@@ -37,14 +37,17 @@ public class GhostController : MonoBehaviour
             Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
-            
-        }
-        else
-        {
-            if (!portal_wall_exists)
-            {
-                
-            }
+            Vector3 pos = transform.position;
+            Vector3 dir = (GameObject.FindWithTag("HumanPortal").transform.position - transform.position).normalized;
+            Debug.Log($"GhostController: PortalDir: {dir}");
+
+            //GameObject.FindWithTag("PortalCamera").transform.forward = Quaternion.Euler(dir) * GameObject.FindWithTag("PortalCamera").transform.forward;
+
+            //Vector3 forwardVector = Quaternion.Euler(yourVector3Rotation) * Vector3.forward
+
+            //transform.rotation = Quaternion.LookRotation(directionVector);
+
+            GameObject.FindWithTag("PortalCamera").transform.rotation = Quaternion.LookRotation(dir);
         }
     }
 
