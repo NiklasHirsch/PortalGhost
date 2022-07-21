@@ -40,6 +40,9 @@ public class GazeController : MonoBehaviour
             removeOutline(activeObject);
             activeObject = null;
             selectedObject.selectedGameObject = null;
+
+            
+            
         }
     }
 
@@ -52,6 +55,11 @@ public class GazeController : MonoBehaviour
             {
                 outline.OutlineWidth = 0f;
             }
+
+            InteractableObject activeInteractableObject = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
+            if(activeInteractableObject.isActive){
+               activeInteractableObject.fallDown();
+            }
         }
     }
 
@@ -63,6 +71,13 @@ public class GazeController : MonoBehaviour
             if (outline != null)
             {
                 selectedObject.selectedGameObject = myObject;
+
+                InteractableObject activeInteractableObject = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
+
+                if(!activeInteractableObject.isActive){
+                    activeInteractableObject.floatUp();
+                }
+
                 outline.OutlineWidth = 6f;
             }
         }
