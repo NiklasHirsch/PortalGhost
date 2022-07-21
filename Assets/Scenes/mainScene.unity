@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -283,6 +283,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9199581781560419192, guid: 448a378c58464bb41a2980e13276fe4c, type: 3}
       propertyPath: m_Name
+      value: GhostCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199581781560419192, guid: 448a378c58464bb41a2980e13276fe4c, type: 3}
+      propertyPath: m_TagString
       value: GhostCamera
       objectReference: {fileID: 0}
     - target: {fileID: 9199581781963410114, guid: 448a378c58464bb41a2980e13276fe4c, type: 3}
@@ -704,6 +708,14 @@ PrefabInstance:
     - target: {fileID: 7439295448292503928, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
       propertyPath: m_Name
       value: PortalWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7439295448292503930, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7439295448292503930, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
