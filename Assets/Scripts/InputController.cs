@@ -17,6 +17,7 @@ public class InputController : MonoBehaviour
     public Vector2InputEvent moveInputEvent;
     public Vector2InputEvent lookInputEvent;
     public ButtonInputEvent createPortalInputEvent;
+    public ButtonInputEvent createPortalTwoInputEvent;
 
     private void Awake()
     {
@@ -39,6 +40,9 @@ public class InputController : MonoBehaviour
 
         controls.FreeMoveCamera.CreatePortal.performed += OnCreatePortalPerformed;
         controls.FreeMoveCamera.CreatePortal.canceled += OnCreatePortalPerformed;
+
+        controls.FreeMoveCamera.CreatePortalTwo.performed += OnCreatePortalTwoPerformed;
+        controls.FreeMoveCamera.CreatePortalTwo.canceled += OnCreatePortalTwoPerformed;
     }
 
     private void OnMovePerformed(InputAction.CallbackContext context)
@@ -58,5 +62,11 @@ public class InputController : MonoBehaviour
     {
         var createPortalInput = context.ReadValue<float>();
         createPortalInputEvent.Invoke(createPortalInput);
+    }
+
+    private void OnCreatePortalTwoPerformed (InputAction.CallbackContext context)
+    {
+        var createPortalInput = context.ReadValue<float>();
+        createPortalTwoInputEvent.Invoke(createPortalInput);
     }
 }

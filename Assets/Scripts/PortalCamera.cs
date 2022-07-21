@@ -19,18 +19,19 @@ public class PortalCamera : MonoBehaviour
     private RenderTexture tempTexture1;
     private RenderTexture tempTexture2;
 
+    [SerializeField]
     private Camera mainCamera;
 
     private void Awake()
     {
-        mainCamera = GetComponent<Camera>();
-
+        
         tempTexture1 = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32);
         tempTexture2 = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32);
     }
 
     private void Start()
     {
+        Debug.Log(portals[0]);
         portals[0].Renderer.material.mainTexture = tempTexture1;
         portals[1].Renderer.material.mainTexture = tempTexture2;
     }

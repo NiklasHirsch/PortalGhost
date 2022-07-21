@@ -53,6 +53,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CreatePortalTwo"",
+                    ""type"": ""Button"",
+                    ""id"": ""e859fbeb-8e87-41f6-b6d7-49c44b658343"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""CreatePortal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09983142-4dac-4fb3-8cff-bfdd3f5021ef"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CreatePortalTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_FreeMoveCamera_Look = m_FreeMoveCamera.FindAction("Look", throwIfNotFound: true);
         m_FreeMoveCamera_Move = m_FreeMoveCamera.FindAction("Move", throwIfNotFound: true);
         m_FreeMoveCamera_CreatePortal = m_FreeMoveCamera.FindAction("CreatePortal", throwIfNotFound: true);
+        m_FreeMoveCamera_CreatePortalTwo = m_FreeMoveCamera.FindAction("CreatePortalTwo", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +226,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_FreeMoveCamera_Look;
     private readonly InputAction m_FreeMoveCamera_Move;
     private readonly InputAction m_FreeMoveCamera_CreatePortal;
+    private readonly InputAction m_FreeMoveCamera_CreatePortalTwo;
     public struct FreeMoveCameraActions
     {
         private @Controls m_Wrapper;
@@ -212,6 +234,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_FreeMoveCamera_Look;
         public InputAction @Move => m_Wrapper.m_FreeMoveCamera_Move;
         public InputAction @CreatePortal => m_Wrapper.m_FreeMoveCamera_CreatePortal;
+        public InputAction @CreatePortalTwo => m_Wrapper.m_FreeMoveCamera_CreatePortalTwo;
         public InputActionMap Get() { return m_Wrapper.m_FreeMoveCamera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,6 +253,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @CreatePortal.started -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnCreatePortal;
                 @CreatePortal.performed -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnCreatePortal;
                 @CreatePortal.canceled -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnCreatePortal;
+                @CreatePortalTwo.started -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnCreatePortalTwo;
+                @CreatePortalTwo.performed -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnCreatePortalTwo;
+                @CreatePortalTwo.canceled -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnCreatePortalTwo;
             }
             m_Wrapper.m_FreeMoveCameraActionsCallbackInterface = instance;
             if (instance != null)
@@ -243,6 +269,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @CreatePortal.started += instance.OnCreatePortal;
                 @CreatePortal.performed += instance.OnCreatePortal;
                 @CreatePortal.canceled += instance.OnCreatePortal;
+                @CreatePortalTwo.started += instance.OnCreatePortalTwo;
+                @CreatePortalTwo.performed += instance.OnCreatePortalTwo;
+                @CreatePortalTwo.canceled += instance.OnCreatePortalTwo;
             }
         }
     }
@@ -252,5 +281,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnCreatePortal(InputAction.CallbackContext context);
+        void OnCreatePortalTwo(InputAction.CallbackContext context);
     }
 }

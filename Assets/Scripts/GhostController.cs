@@ -26,6 +26,8 @@ public class GhostController : MonoBehaviour
     [SerializeField]
     private Crosshair crosshair;
 
+    int valuePortal = 0;
+
     private void Update()
     {
         if(create_portal_pressed < 1)
@@ -120,7 +122,7 @@ public class GhostController : MonoBehaviour
 
             if (wasPlaced)
             {
-                Debug.Log("PORTAL WAS PLACEF");
+                Debug.Log("PORTAL WAS PLACED");
                 crosshair.SetPortalPlaced(portalID, true);
             }
         }
@@ -132,7 +134,7 @@ public class GhostController : MonoBehaviour
         this.mouseX = x;
         this.mouseY = y;
 
-        Debug.Log($"GhostController: LookInput: {x}, {y}");
+       // Debug.Log($"GhostController: LookInput: {x}, {y}");
     }
 
     public void OnMoveInput(float horizontal, float vertical)
@@ -140,7 +142,7 @@ public class GhostController : MonoBehaviour
         this.vertical = vertical;
         this.horizontal = horizontal;
         
-        Debug.Log($"GhostController: MoveInput: {vertical}, {horizontal}");
+       // Debug.Log($"GhostController: MoveInput: {vertical}, {horizontal}");
     }
 
     public void OnCreatePortalInput(float create_portal_pressed)
@@ -148,8 +150,23 @@ public class GhostController : MonoBehaviour
         this.create_portal_pressed = create_portal_pressed;
 
         FirePortal(0, transform.position, transform.forward, 250.0f);
-        Debug.Log("POOOOOOOOOOOOOOOOOOOOOOOOORTAAAAAAAAAAAAAAAAAAAAAAAAAAAAALLLLLLLLLLLLLL");
+        Debug.Log($"Portal: {valuePortal}");
+        if (valuePortal == 0)
+        {
+            valuePortal = 1;
+        }else
+        {
+            valuePortal = 0;
+        }
 
         Debug.Log($"InputController: createPortalInput: {create_portal_pressed}");
+    }
+    public void OnCreatePortalInputTwo(float create_portal_pressed)
+    {
+        this.create_portal_pressed = create_portal_pressed;
+
+        FirePortal(1, transform.position, transform.forward, 250.0f);
+
+        Debug.Log($"InputController: createPortalTwoInput: {create_portal_pressed}");
     }
 }
