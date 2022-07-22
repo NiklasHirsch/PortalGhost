@@ -8,34 +8,49 @@ public class InteractableObject : MonoBehaviour
 {
     //basic obj variables
     public bool isActive = false;
-    public bool isInTheAir = false;
  
     [Header("Shake Settings")]
-    public float minimalYitter = -0.05f;
-    public float maximalYitter = 0.05f;
+    public float minimalYitter = -0.01f;
+    public float maximalYitter = 0.01f;
 
 
     [Header("Hover transition Settings")]
     public bool floatAtStart = false;
     [SerializeField]
-    [Range(0,10)]
-    private float hoverLevel = 1;
+    [Range(0,2)]
+    private float hoverLevel = 0.5f;
     [SerializeField]
-    [Range(0,10)]
-    private float secondTillStabilized = 1;
+    [Range(0,2)]
+    private float secondTillStabilized = 0.2f;
 
     [Header("Push/Pull Settings")]
     [SerializeField]
-    [Range(0,4)]
-    private float distance = 2f;
+    [Range(0,10)]
+    private float forceDistance = 2f;
+
+    private Vector3 posAfterFloat;
+    private float distanceToObj;
+    private Vector3 normalizedCameraViewVector;
+    private Vector3 cameraCenter;
 
     public void Start(){
-        if(floatAtStart){
+        if (floatAtStart){
             floatUp();
         }
     }
 
     public void Update(){
+        Debug.Log(isActive);
+        if (isActive) {
+            // Central point of camera
+            cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
+
+            normalizedCameraViewVector = Camera.main.transform.forward.normalized;
+
+            transform.position = cameraCenter + normalizedCameraViewVector * distanceToObj;
+
+            Debug.Log(transform.position);
+        }
     }
 
     public bool getState() {
@@ -45,15 +60,26 @@ public class InteractableObject : MonoBehaviour
     public virtual void floatUp() {
         Debug.Log("float up");
 
-        transform.GetComponent<Rigidbody>().isKinematic = true;
-
-        StartCoroutine (MoveOverSeconds (gameObject, new Vector3(transform.position.x, (transform.position.y + hoverLevel), transform.position.z), secondTillStabilized, doAfterFloat));
+        if (!isActive) {
+            transform.GetComponent<Rigidbody>().isKinematic = true;
+            StartCoroutine(MoveOverSeconds(gameObject, new Vector3(transform.position.x, (transform.position.y + hoverLevel), transform.position.z), secondTillStabilized, doAfterFloat));
+        }
     }
 
     public virtual void doAfterFloat(){
-         Debug.Log("After");
-         isInTheAir = true;
-         isActive = true;
+        Debug.Log("After");
+        isActive = true;
+
+        // Pos of Object after floating
+        posAfterFloat = transform.position;
+
+        // Central point of camera
+        cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
+
+        // Distance from Camera center to the object
+        distanceToObj = Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane)), posAfterFloat);
+
+        Debug.Log("DistToObj: " + distanceToObj);
     }
  
 
@@ -78,24 +104,26 @@ public class InteractableObject : MonoBehaviour
 
     public virtual void fallDown() {
         Debug.Log("fall down");
+        StopAllCoroutines();
         transform.GetComponent<Rigidbody>().isKinematic = false;
-        isInTheAir = false;
         isActive = false;
     }
 
 
     public virtual void pull() {
+        Debug.Log("pull");
         if(isActive){
             Debug.Log(gameObject.name + " pulled");
-            transform.position = transform.position + Camera.main.transform.forward * distance * Time.deltaTime * -1;
+            transform.position = transform.position + Camera.main.transform.forward * forceDistance * Time.deltaTime * -1;
         }
         
     }
 
     public virtual void push() {
-        if(isActive){
+        Debug.Log("push");
+        if (isActive){
             Debug.Log(gameObject.name + " pushed");
-            transform.position = transform.position + Camera.main.transform.forward * distance * Time.deltaTime;
+            transform.position = transform.position + Camera.main.transform.forward * forceDistance * Time.deltaTime;
         }
     }
 }

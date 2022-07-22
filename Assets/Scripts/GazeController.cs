@@ -14,36 +14,39 @@ public class GazeController : MonoBehaviour
 
     void Update()
     {
-        var cameraCenter = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, GetComponent<Camera>().nearClipPlane));
-        if (Physics.Raycast(cameraCenter, this.transform.forward, out hit, 100))
-        {
-            GameObject obj = hit.transform.gameObject;
-
-            if (!isInteractableObject(obj))
+        /*
+        if (!selectedObject.selectedGameObject.GetComponent<InteractableObject>().isActive)
+        {*/
+            var cameraCenter = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, GetComponent<Camera>().nearClipPlane));
+            if (Physics.Raycast(cameraCenter, this.transform.forward, out hit, 100))
             {
-                removeOutline(activeObject);
-                return;
-            }
+                GameObject obj = hit.transform.gameObject;
 
-            if (obj != activeObject)
-            {
-                if (activeObject != null)
+                if (obj != activeObject)
+                {
+                    if (activeObject != null)
+                    {
+                        removeOutline(activeObject);
+                    }
+                    activeObject = obj;
+                    addOutline(obj);
+                }
+
+                else if (!isInteractableObject(obj))
                 {
                     removeOutline(activeObject);
+                    return;
                 }
-                activeObject = obj;
-                addOutline(obj);
-            }
-        }
-        else
-        {
-            removeOutline(activeObject);
-            activeObject = null;
-            selectedObject.selectedGameObject = null;
 
-            
-            
-        }
+
+            }
+            else
+            {
+                removeOutline(activeObject);
+                activeObject = null;
+                selectedObject.selectedGameObject = null;
+            }
+        //}
     }
 
     private void removeOutline(GameObject theObject)
@@ -54,11 +57,6 @@ public class GazeController : MonoBehaviour
             if (outline != null)
             {
                 outline.OutlineWidth = 0f;
-            }
-
-            InteractableObject activeInteractableObject = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
-            if(activeInteractableObject.isActive){
-               activeInteractableObject.fallDown();
             }
         }
     }
@@ -72,12 +70,6 @@ public class GazeController : MonoBehaviour
             {
                 selectedObject.selectedGameObject = myObject;
 
-                InteractableObject activeInteractableObject = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
-
-                if(!activeInteractableObject.isActive){
-                    activeInteractableObject.floatUp();
-                }
-
                 outline.OutlineWidth = 6f;
             }
         }
@@ -85,7 +77,7 @@ public class GazeController : MonoBehaviour
 
     private bool isInteractableObject(GameObject myObject)
     {
-        if (myObject.GetComponent<InteractableObject>() != null && myObject.GetComponent<Outline>() == null)
+        if (myObject != null && myObject.GetComponent<InteractableObject>() != null && myObject.GetComponent<Outline>() == null)
         {
             myObject.AddComponent<Outline>();
             outline.OutlineMode = Outline.Mode.OutlineAll;
