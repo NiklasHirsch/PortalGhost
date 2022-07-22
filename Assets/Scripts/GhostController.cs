@@ -22,17 +22,29 @@ public class GhostController : MonoBehaviour
     //Quaternion human_portal_base_rotation;
     //Vector3 human_portal_pos = new Vector3(-0.951f, 1.8096f, -2.947f); // (1)
 
-    bool portal_entered = false;
+    bool human_portal_entered = false;
+    bool portal_wall_entered = false;
+    int timer = 0;
 
     private void Update()
     {
         if (create_portal_pressed < 1)
         {
-            if (portal_entered)
+            if (human_portal_entered && timer == 0)
             {
                 transform.position = GameObject.FindWithTag("PortalWall").transform.position;
                 transform.rotation = portal_wall_base_rotation;
-                portal_entered = false;
+                human_portal_entered = false;
+                timer = 300;
+                
+            }
+            if (portal_wall_entered && timer == 0)
+            {
+                transform.position = GameObject.FindWithTag("HumanPortal").transform.position;
+                transform.eulerAngles = new Vector3(0, 180, 0);
+                portal_wall_entered = false;
+                timer = 300;
+                
             }
 
             float RotationX = horizontalCameraSensitivity * mouseX * Time.deltaTime;
@@ -48,6 +60,13 @@ public class GhostController : MonoBehaviour
 
             Vector3 dir = (GameObject.FindWithTag("HumanPortal").transform.position - transform.position).normalized;
             GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Quaternion.LookRotation(dir);
+
+
+            if (timer > 0)
+            {
+                timer -= 1;
+                Debug.Log($"GhostController: {timer}");
+            }
         }
     }
 
@@ -96,18 +115,33 @@ public class GhostController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Name of the object entered: " + other.gameObject.name);
-        Debug.Log("Name of the object entered: " + GameObject.FindWithTag("MainCamera").transform.position);
-        Debug.Log("Name of the object entered: " + GameObject.FindWithTag("PortalWall").transform.position);
-
-        portal_entered = true;
+        Debug.Log("Ghost entered trigger from: " + other.gameObject.name);     
+        if(other.gameObject.tag == "HumanPortal")
+        {
+            human_portal_entered = true;      
+        }
+        if (other.gameObject.tag == "PortalWall")
+        {
+            portal_wall_entered = true;       
+        }
     }
+
     private void OnTriggerStay(Collider other)
     {
-        //Debug.Log("An object is still inside of the trigger");
+        //
     }
+
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Name of the object exited: " + other.gameObject.name);
+        Debug.Log("Ghost exited trigger from: " + other.gameObject.name);
+
+        if (other.gameObject.tag == "HumanPortal")
+        {
+            human_portal_entered = false;
+        }
+        if (other.gameObject.tag == "PortalWall")
+        {
+            portal_wall_entered = false;
+        }
     }
 }
