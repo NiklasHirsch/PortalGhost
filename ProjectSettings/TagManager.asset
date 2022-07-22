@@ -19,6 +19,9 @@ TagManager:
   - ElevatorButton8
   - ElevatorButton9
   - ElevatorDeleteButton
+  - projectile
+  - FxTemporaire
+  - Elevator
   layers:
   - Default
   - TransparentFX

@@ -30,12 +30,12 @@ public class VivePosTracker : MonoBehaviour
     }
 
     void CheckDeactivate() {
-        if (transform.position.y < heightThreshold && selectedObject.selectedGameObject != null)
+        if (transform.position.y < startYPos + heightThreshold && selectedObject.selectedGameObject != null)
         {
             Debug.Log(selectedObject.selectedGameObject);
             Debug.Log("Deactivate");
             InteractableObject activeInteractableObject = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
-            if (activeInteractableObject != null && activeInteractableObject.isActive)
+            if (activeInteractableObject != null /* && activeInteractableObject.isActive*/)
             {
                 activeInteractableObject.fallDown();
             }
@@ -44,7 +44,7 @@ public class VivePosTracker : MonoBehaviour
 
     void CheckActivate() {
 
-        if (transform.position.y > heightThreshold && selectedObject.selectedGameObject != null)
+        if (transform.position.y > startYPos + heightThreshold && selectedObject.selectedGameObject != null)
         {
             Debug.Log("Activate");
             InteractableObject activeInteractableObject = selectedObject.selectedGameObject.GetComponent<InteractableObject>();

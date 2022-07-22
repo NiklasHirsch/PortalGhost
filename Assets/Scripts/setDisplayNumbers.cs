@@ -29,12 +29,11 @@ public class setDisplayNumbers : MonoBehaviour
     void Update()
     {
         displayText.text = numbers;
-        addNumber(button1);
     }
 
     private void checkCode()
     {
-        if(numbers == "111111")//327614
+        if(numbers == "327614")//327614
         {
             displayText.color = new Color(0, 200, 0, 255);
             finishText.text = "You did it!";

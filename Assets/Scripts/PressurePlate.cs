@@ -7,6 +7,8 @@ public class PressurePlate : MonoBehaviour
     [SerializeField] private Light mylight;
     public bool isActivated;
     public int minTriggerMass = 10;
+
+    private int counter = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +21,9 @@ public class PressurePlate : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "PPKey")
+        if (other.tag == "PPKey" && !isActivated)
         {
             float distance = Vector3.Distance(transform.position, other.transform.position);
 
@@ -33,12 +35,24 @@ public class PressurePlate : MonoBehaviour
                 {
                     if (box.mass >= minTriggerMass)
                     {
-                    transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 0.3f, transform.localScale.z);
-                    mylight.intensity = 3;
-                    isActivated = true;
+                        counter++;
+                        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 0.5f, transform.localScale.z);
+                        mylight.intensity = 3;
+                        isActivated = true;
                     }
                 }
             }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "PPKey" && isActivated && counter == 1)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2f, transform.localScale.z);
+            mylight.intensity = 0;
+            counter--;
+            isActivated = false;
         }
     }
 }
