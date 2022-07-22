@@ -19,6 +19,7 @@ TagManager:
   - ElevatorButton8
   - ElevatorButton9
   - ElevatorDeleteButton
+  - PortalCameraView
   layers:
   - Default
   - TransparentFX

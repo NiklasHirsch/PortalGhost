@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GhostController : MonoBehaviour
 {
@@ -60,18 +61,20 @@ public class GhostController : MonoBehaviour
             Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
-            //Vector3 dir = (GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position).normalized;
+            Vector3 dir = (GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position).normalized;
+            
             //GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Quaternion.LookRotation(dir);
 
-            //GameObject.FindWithTag("PortalCamera").transform.rotation = Quaternion.Inverse(Camera.main.transform.rotation); 
+            Vector3 disatance = GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position;
 
-            Vector3 distance = (GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position).normalized;
+            GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Camera.main.transform.rotation * Quaternion.LookRotation(dir);
+            //GameObject.FindWithTag("PortalCamera").transform.position = GameObject.FindWithTag("PortalWall").transform.position + dir;
 
-            GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Camera.main.transform.rotation;
-            GameObject.FindWithTag("PortalCamera").transform.position = GameObject.FindWithTag("PortalWall").transform.position + distance;
+            //GameObject.FindWithTag("PortalCameraView").GetComponent<Camera>().fieldOfView -= (disatance.magnitude * 2);
+            GameObject.FindWithTag("PortalCameraView").GetComponent<Camera>().fieldOfView = (float)(2 * Math.Atan(110/(2 * disatance.magnitude)));
 
 
-            Debug.Log($"GhostController: {Camera.main.transform.rotation}");
+            Debug.Log($"GhostController: {disatance}");
 
             if (timer > 0)
             {
