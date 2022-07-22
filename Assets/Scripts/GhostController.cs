@@ -27,7 +27,8 @@ public class GhostController : MonoBehaviour
     bool portal_wall_entered = false;
     int timer = 0;
 
-    Quaternion inate_rotation;
+    Vector3 inate_position;
+    Vector3 inate_forward;
 
     private void Update()
     {
@@ -62,19 +63,23 @@ public class GhostController : MonoBehaviour
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
             Vector3 dir = (GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position).normalized;
-            
+            Vector3 distance = GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position;
+
+            //GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Camera.main.transform.rotation * Quaternion.LookRotation(dir);
+
             //GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Quaternion.LookRotation(dir);
+            GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation;
 
-            Vector3 disatance = GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position;
-
-            GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Camera.main.transform.rotation * Quaternion.LookRotation(dir);
-            //GameObject.FindWithTag("PortalCamera").transform.position = GameObject.FindWithTag("PortalWall").transform.position + dir;
-
-            //GameObject.FindWithTag("PortalCameraView").GetComponent<Camera>().fieldOfView -= (disatance.magnitude * 2);
-            GameObject.FindWithTag("PortalCameraView").GetComponent<Camera>().fieldOfView = (float)(2 * Math.Atan(110/(2 * disatance.magnitude)));
+            GameObject.FindWithTag("PortalCamera").transform.position = inate_position - (GameObject.FindWithTag("PortalCamera").transform.forward * distance.magnitude);
+            GameObject.FindWithTag("PortalCameraView").GetComponent<Camera>().nearClipPlane = distance.magnitude;
 
 
-            Debug.Log($"GhostController: {disatance}");
+            GameObject.FindWithTag("PortalCamera").transform.rotation *= Camera.main.transform.rotation;
+
+            GameObject.FindWithTag("PortalCameraView").GetComponent<Camera>().fieldOfView = (float)(2 * Math.Atan(60/(2 * distance.magnitude)));
+
+
+            Debug.Log($"GhostController: {distance}");
 
             if (timer > 0)
             {
@@ -113,9 +118,13 @@ public class GhostController : MonoBehaviour
             GameObject.FindWithTag("PortalCamera").transform.position = transform.position;
             GameObject.FindWithTag("PortalCamera").transform.rotation = transform.rotation;
 
-            inate_rotation = transform.rotation;
+            inate_position = transform.position;
+            inate_forward = transform.forward;
 
-            GameObject.FindWithTag("HumanPortal").transform.position = human_portal_pos;
+            //GameObject.FindWithTag("HumanPortal").transform.position = human_portal_pos;
+
+
+
             //human_portal_base_rotation = GameObject.FindWithTag("HumanPortal").transform.rotation;
         }
         else
