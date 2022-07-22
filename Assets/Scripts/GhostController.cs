@@ -18,13 +18,15 @@ public class GhostController : MonoBehaviour
     Vector3 portal_wall_origin = new Vector3(-100, -100, -100);
     Quaternion portal_wall_base_rotation;
     Vector3 human_portal_origin = new Vector3(-100, -100, -100);
-    Vector3 human_portal_pos = new Vector3(-0.281f, 1.925f, 2.953f);
+    Vector3 human_portal_pos = new Vector3(-0.413f, 1.73f, 2.953f);
     //Quaternion human_portal_base_rotation;
     //Vector3 human_portal_pos = new Vector3(-0.951f, 1.8096f, -2.947f); // (1)
 
     bool human_portal_entered = false;
     bool portal_wall_entered = false;
     int timer = 0;
+
+    Quaternion inate_rotation;
 
     private void Update()
     {
@@ -58,9 +60,18 @@ public class GhostController : MonoBehaviour
             Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
-            Vector3 dir = (GameObject.FindWithTag("HumanPortal").transform.position - transform.position).normalized;
-            GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Quaternion.LookRotation(dir);
+            //Vector3 dir = (GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position).normalized;
+            //GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Quaternion.LookRotation(dir);
 
+            //GameObject.FindWithTag("PortalCamera").transform.rotation = Quaternion.Inverse(Camera.main.transform.rotation); 
+
+            Vector3 distance = (GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position).normalized;
+
+            GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Camera.main.transform.rotation;
+            GameObject.FindWithTag("PortalCamera").transform.position = GameObject.FindWithTag("PortalWall").transform.position + distance;
+
+
+            Debug.Log($"GhostController: {Camera.main.transform.rotation}");
 
             if (timer > 0)
             {
@@ -92,12 +103,14 @@ public class GhostController : MonoBehaviour
 
         if (create_portal_pressed == 1)
         {
-            GameObject.FindWithTag("PortalWall").transform.position = transform.position - transform.forward;
+            GameObject.FindWithTag("PortalWall").transform.position = transform.position; // - transform.forward; spawn at distance
             GameObject.FindWithTag("PortalWall").transform.rotation = transform.rotation;
             portal_wall_base_rotation = transform.rotation;
 
             GameObject.FindWithTag("PortalCamera").transform.position = transform.position;
             GameObject.FindWithTag("PortalCamera").transform.rotation = transform.rotation;
+
+            inate_rotation = transform.rotation;
 
             GameObject.FindWithTag("HumanPortal").transform.position = human_portal_pos;
             //human_portal_base_rotation = GameObject.FindWithTag("HumanPortal").transform.rotation;
