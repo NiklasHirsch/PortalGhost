@@ -14,35 +14,39 @@ public class GazeController : MonoBehaviour
 
     void Update()
     {
-        var cameraCenter = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, GetComponent<Camera>().nearClipPlane));
-        if (Physics.Raycast(cameraCenter, this.transform.forward, out hit, 100))
-        {
-            GameObject obj = hit.transform.gameObject;
-
-            if (obj != activeObject)
+        /*
+        if (!selectedObject.selectedGameObject.GetComponent<InteractableObject>().isActive)
+        {*/
+            var cameraCenter = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, GetComponent<Camera>().nearClipPlane));
+            if (Physics.Raycast(cameraCenter, this.transform.forward, out hit, 100))
             {
-                if (activeObject != null)
+                GameObject obj = hit.transform.gameObject;
+
+                if (obj != activeObject)
+                {
+                    if (activeObject != null)
+                    {
+                        removeOutline(activeObject);
+                    }
+                    activeObject = obj;
+                    addOutline(obj);
+                }
+
+                else if (!isInteractableObject(obj))
                 {
                     removeOutline(activeObject);
+                    return;
                 }
-                activeObject = obj;
-                addOutline(obj);
-            }
 
-            else if (!isInteractableObject(obj))
+
+            }
+            else
             {
                 removeOutline(activeObject);
-                return;
+                activeObject = null;
+                selectedObject.selectedGameObject = null;
             }
-
-            
-        }
-        else
-        {
-            removeOutline(activeObject);
-            activeObject = null;
-            selectedObject.selectedGameObject = null;
-        }
+        //}
     }
 
     private void removeOutline(GameObject theObject)

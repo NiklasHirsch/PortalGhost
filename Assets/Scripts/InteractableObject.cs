@@ -25,10 +25,13 @@ public class InteractableObject : MonoBehaviour
 
     [Header("Push/Pull Settings")]
     [SerializeField]
-    [Range(0,2)]
-    private float distance = 0.2f;
+    [Range(0,10)]
+    private float forceDistance = 2f;
 
     private Vector3 posAfterFloat;
+    private float distanceToObj;
+    private Vector3 normalizedCameraViewVector;
+    private Vector3 cameraCenter;
 
     public void Start(){
         if (floatAtStart){
@@ -37,11 +40,16 @@ public class InteractableObject : MonoBehaviour
     }
 
     public void Update(){
+        Debug.Log(isActive);
         if (isActive) {
-            /*Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-            pos.x = Mathf.Clamp01(pos.x);
-            pos.y = Mathf.Clamp01(pos.y);
-            transform.position = Camera.main.ViewportToWorldPoint(pos);*/
+            // Central point of camera
+            cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
+
+            normalizedCameraViewVector = Camera.main.transform.forward.normalized;
+
+            transform.position = cameraCenter + normalizedCameraViewVector * distanceToObj;
+
+            Debug.Log(transform.position);
         }
     }
 
@@ -62,13 +70,16 @@ public class InteractableObject : MonoBehaviour
         Debug.Log("After");
         isActive = true;
 
-
+        // Pos of Object after floating
         posAfterFloat = transform.position;
-        //Vector3 cameraCenter = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, GetComponent<Camera>().nearClipPlane));
 
-        //Vector3 diff = posAfterFloat - cameraCenter;
+        // Central point of camera
+        cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
 
-        //float distanceToObj = Vector3.Distance(cameraCenter, posAfterFloat);
+        // Distance from Camera center to the object
+        distanceToObj = Vector3.Distance(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane)), posAfterFloat);
+
+        Debug.Log("DistToObj: " + distanceToObj);
     }
  
 
@@ -103,7 +114,7 @@ public class InteractableObject : MonoBehaviour
         Debug.Log("pull");
         if(isActive){
             Debug.Log(gameObject.name + " pulled");
-            transform.position = transform.position + Camera.main.transform.forward * distance * Time.deltaTime * -1;
+            transform.position = transform.position + Camera.main.transform.forward * forceDistance * Time.deltaTime * -1;
         }
         
     }
@@ -112,7 +123,7 @@ public class InteractableObject : MonoBehaviour
         Debug.Log("push");
         if (isActive){
             Debug.Log(gameObject.name + " pushed");
-            transform.position = transform.position + Camera.main.transform.forward * distance * Time.deltaTime;
+            transform.position = transform.position + Camera.main.transform.forward * forceDistance * Time.deltaTime;
         }
     }
 }
