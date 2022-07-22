@@ -9,6 +9,16 @@ TagManager:
   - HumanPortal
   - GhostCamera
   - PPKey
+  - ElevatorButton1
+  - ElevatorButton2
+  - ElevatorButton3
+  - ElevatorButton4
+  - ElevatorButton5
+  - ElevatorButton6
+  - ElevatorButton7
+  - ElevatorButton8
+  - ElevatorButton9
+  - ElevatorDeleteButton
   layers:
   - Default
   - TransparentFX
