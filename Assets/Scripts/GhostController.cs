@@ -65,6 +65,7 @@ public class GhostController : MonoBehaviour
 
             //GameObject.FindWithTag("PortalCamera").transform.rotation = Quaternion.Inverse(Camera.main.transform.rotation); 
 
+
             Vector3 distance = (GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position).normalized;
 
             GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Camera.main.transform.rotation;

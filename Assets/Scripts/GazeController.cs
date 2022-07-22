@@ -8,6 +8,10 @@ public class GazeController : MonoBehaviour
     [SerializeField]
     private SelectedObject selectedObject;
 
+
+    [SerializeField]
+    private GameObject springConnector;
+
     private RaycastHit hit;
     private GameObject activeObject = null;
     private Outline outline;
@@ -20,6 +24,7 @@ public class GazeController : MonoBehaviour
             var cameraCenter = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, GetComponent<Camera>().nearClipPlane));
             if (Physics.Raycast(cameraCenter, this.transform.forward, out hit, 100))
             {
+               
                 GameObject obj = hit.transform.gameObject;
 
                 if (obj != activeObject)

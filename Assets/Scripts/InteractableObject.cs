@@ -28,6 +28,10 @@ public class InteractableObject : MonoBehaviour
     [Range(0,10)]
     private float forceDistance = 2f;
 
+    [SerializeField]
+    private float _durationPerUnitMoved = 0.1f;
+    private bool _pullObjectRuntineRunning = false;
+
     private Vector3 posAfterFloat;
     private float distanceToObj;
     private Vector3 normalizedCameraViewVector;
@@ -39,17 +43,22 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
-    public void Update(){
-        Debug.Log(isActive);
+    public void FixedUpdate(){
         if (isActive) {
             // Central point of camera
             cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
-
             normalizedCameraViewVector = Camera.main.transform.forward.normalized;
 
+            distanceToObj += velocity;
             transform.position = cameraCenter + normalizedCameraViewVector * distanceToObj;
-
-            Debug.Log(transform.position);
+            
+            /*
+             * Lerp approach
+            Vector3 goalLocation = cameraCenter + normalizedCameraViewVector * distanceToObj;
+            if (!_pullObjectRuntineRunning)
+            {
+                StartCoroutine(distanceChange(goalLocation));
+            }*/
         }
     }
 
@@ -69,6 +78,8 @@ public class InteractableObject : MonoBehaviour
     public virtual void doAfterFloat(){
         Debug.Log("After");
         isActive = true;
+
+        // springJointSettings();
 
         // Pos of Object after floating
         posAfterFloat = transform.position;
@@ -109,12 +120,18 @@ public class InteractableObject : MonoBehaviour
         isActive = false;
     }
 
-
+    float velocity = 0f;
     public virtual void pull() {
         Debug.Log("pull");
         if(isActive){
-            Debug.Log(gameObject.name + " pulled");
-            transform.position = transform.position + Camera.main.transform.forward * forceDistance * Time.deltaTime * -1;
+            //distanceToObj = distanceToObj - 0.1f * forceDistance;
+
+            velocity = -0.1f * forceDistance * 0.03f;
+
+            //float newDistanceToObj = distanceToObj - 0.1f * forceDistance;
+            //StartCoroutine(distanceChange(newDistanceToObj));
+
+            //transform.position = transform.position + Camera.main.transform.forward * forceDistance * Time.deltaTime * -1;
         }
         
     }
@@ -122,8 +139,38 @@ public class InteractableObject : MonoBehaviour
     public virtual void push() {
         Debug.Log("push");
         if (isActive){
-            Debug.Log(gameObject.name + " pushed");
-            transform.position = transform.position + Camera.main.transform.forward * forceDistance * Time.deltaTime;
+            //distanceToObj = distanceToObj + 0.1f * forceDistance;
+
+            velocity = 0.1f * forceDistance * 0.03f;
+            //float newDistanceToObj = distanceToObj + 0.1f * forceDistance;
+            //StartCoroutine(distanceChange(newDistanceToObj));
+
+            //transform.position = transform.position + Camera.main.transform.forward * forceDistance * Time.deltaTime;
         }
     }
+
+    public IEnumerator distanceChange(Vector3 goalLocation)
+    {
+        _pullObjectRuntineRunning = true;
+        float time = 0;
+        float duration = _durationPerUnitMoved * Vector3.Distance(transform.position, goalLocation);
+
+        Vector3 startPosition = transform.position;
+
+        while (time < duration) {
+
+            transform.position = Vector3.Lerp(startPosition, goalLocation, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        _pullObjectRuntineRunning = false;
+    }
+
+    private void springJointSetting() {
+        GameObject springJointObj = GameObject.FindGameObjectWithTag("SpringJoint");
+        SpringJoint springJoint = springJointObj.GetComponent<SpringJoint>();
+        // TODO springJoint.connectedBody = ;
+    }
+
 }

@@ -18,8 +18,8 @@ public class LSLInput : MonoBehaviour
     void Start()
     {
         Debug.Log("start");
-        streamInfos = LSL.LSL.resolve_streams(); //"name", StreamType, 1, 5.0
-        //streamInfos = LSL.LSL.resolve_stream("type", StreamType, 1, 0.01);
+        //streamInfos = LSL.LSL.resolve_streams(); //"name", StreamType, 1, 5.0
+        streamInfos = LSL.LSL.resolve_stream("type", StreamType, 1, 0.01);
 
         if (streamInfos.Length > 0)
         {
@@ -45,8 +45,8 @@ public class LSLInput : MonoBehaviour
             //sample = new float[channelCount];
             
 
-            double lastTimeStamp = streamInlet.pull_sample(sample, 0.01f);
-            //Debug.Log(sample[0]);
+            double lastTimeStamp = streamInlet.pull_sample(sample, 0.04f);
+            Debug.Log("Stamp: " + lastTimeStamp + " sample: " + sample[0]);
 
             if (lastTimeStamp != 0.0)
             {
