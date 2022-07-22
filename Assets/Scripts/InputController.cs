@@ -5,22 +5,28 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [System.Serializable]
-public class Vector2InputEvent: UnityEvent<float, float> { }
+public class Vector2InputEvent : UnityEvent<float, float> { }
 
 [System.Serializable]
 public class ButtonInputEvent : UnityEvent<float> { }
 
 public class InputController : MonoBehaviour
 {
+    [SerializeField]
+    private GameState gameState;
+
     Controls controls;
 
     public Vector2InputEvent moveInputEvent;
     public Vector2InputEvent lookInputEvent;
     public ButtonInputEvent createPortalInputEvent;
+    protected GameObject gui;
 
     private void Awake()
     {
         controls = new Controls();
+        gui = GameObject.Find("GUI");
+        gameState.menuOpen = true;
     }
     private void Start()
     {
@@ -39,6 +45,14 @@ public class InputController : MonoBehaviour
 
         controls.FreeMoveCamera.CreatePortal.performed += OnCreatePortalPerformed;
         controls.FreeMoveCamera.CreatePortal.canceled += OnCreatePortalPerformed;
+
+        controls.FreeMoveCamera.ToggleMenu.performed += OnToggleMenuPerformed;
+        //controls.FreeMoveCamera.ToggleMenu.canceled += OnToggleMenuPerformed;
+    }
+
+    private void OnDestroy()
+    {
+        controls.FreeMoveCamera.ToggleMenu.performed -= OnToggleMenuPerformed;
     }
 
     private void OnMovePerformed(InputAction.CallbackContext context)
@@ -57,5 +71,13 @@ public class InputController : MonoBehaviour
     {
         var createPortalInput = context.ReadValue<float>();
         createPortalInputEvent.Invoke(createPortalInput);
+    }
+
+    private void OnToggleMenuPerformed(InputAction.CallbackContext context)
+    {
+        if (gameState.gameStarted)
+        {
+            gameState.ToggleMenu(gui);
+        }
     }
 }
