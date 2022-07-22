@@ -53,6 +53,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""af5a6850-a217-432b-a5cb-f17d4c08efcd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""CreatePortal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27aa2262-ef77-4332-af49-a745bab1740e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_FreeMoveCamera_Look = m_FreeMoveCamera.FindAction("Look", throwIfNotFound: true);
         m_FreeMoveCamera_Move = m_FreeMoveCamera.FindAction("Move", throwIfNotFound: true);
         m_FreeMoveCamera_CreatePortal = m_FreeMoveCamera.FindAction("CreatePortal", throwIfNotFound: true);
+        m_FreeMoveCamera_ToggleMenu = m_FreeMoveCamera.FindAction("ToggleMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +226,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_FreeMoveCamera_Look;
     private readonly InputAction m_FreeMoveCamera_Move;
     private readonly InputAction m_FreeMoveCamera_CreatePortal;
+    private readonly InputAction m_FreeMoveCamera_ToggleMenu;
     public struct FreeMoveCameraActions
     {
         private @Controls m_Wrapper;
@@ -212,6 +234,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_FreeMoveCamera_Look;
         public InputAction @Move => m_Wrapper.m_FreeMoveCamera_Move;
         public InputAction @CreatePortal => m_Wrapper.m_FreeMoveCamera_CreatePortal;
+        public InputAction @ToggleMenu => m_Wrapper.m_FreeMoveCamera_ToggleMenu;
         public InputActionMap Get() { return m_Wrapper.m_FreeMoveCamera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,6 +253,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @CreatePortal.started -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnCreatePortal;
                 @CreatePortal.performed -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnCreatePortal;
                 @CreatePortal.canceled -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnCreatePortal;
+                @ToggleMenu.started -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnToggleMenu;
+                @ToggleMenu.performed -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnToggleMenu;
+                @ToggleMenu.canceled -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnToggleMenu;
             }
             m_Wrapper.m_FreeMoveCameraActionsCallbackInterface = instance;
             if (instance != null)
@@ -243,6 +269,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @CreatePortal.started += instance.OnCreatePortal;
                 @CreatePortal.performed += instance.OnCreatePortal;
                 @CreatePortal.canceled += instance.OnCreatePortal;
+                @ToggleMenu.started += instance.OnToggleMenu;
+                @ToggleMenu.performed += instance.OnToggleMenu;
+                @ToggleMenu.canceled += instance.OnToggleMenu;
             }
         }
     }
@@ -252,5 +281,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnCreatePortal(InputAction.CallbackContext context);
+        void OnToggleMenu(InputAction.CallbackContext context);
     }
 }

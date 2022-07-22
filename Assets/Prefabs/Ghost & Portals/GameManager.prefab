@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313ca4017968f68408f434fef8e9fb24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: {fileID: 11400000, guid: 45eaad100c9f746f18a12de23e0b680a, type: 2}
   moveInputEvent:
     m_PersistentCalls:
       m_Calls:
