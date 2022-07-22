@@ -43,9 +43,13 @@ public class InputController : MonoBehaviour
 
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
+        GameObject.Find("HumanMale_Character_FREE").GetComponent<Animator>().Play("RunForward");
+
         Vector2 moveInput = context.ReadValue<Vector2>();
         moveInputEvent.Invoke(moveInput.x, moveInput.y);
     }
+
+
 
     private void OnLookPerformed(InputAction.CallbackContext context)
     {
