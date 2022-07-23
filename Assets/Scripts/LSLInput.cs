@@ -45,8 +45,8 @@ public class LSLInput : MonoBehaviour
             //sample = new float[channelCount];
             
 
-            double lastTimeStamp = streamInlet.pull_sample(sample, 0.04f);
-            Debug.Log("Stamp: " + lastTimeStamp + " sample: " + sample[0]);
+            double lastTimeStamp = streamInlet.pull_sample(sample, 0.02f);
+            //Debug.Log("Stamp: " + lastTimeStamp + " sample: " + sample[0]);
 
             if (lastTimeStamp != 0.0)
             {
@@ -64,11 +64,11 @@ public class LSLInput : MonoBehaviour
     void Process(string[] newSample, double timeStamp)
     {
 
-        Debug.Log(newSample[0]);
+        //Debug.Log(newSample[0]);
         if (selectedObject.selectedGameObject != null){
            
             InteractableObject activeObject = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
-            //Debug.Log(newSample[0]);
+            Debug.Log(newSample[0]);
 
             if (activeObject.getState()){
                 switch(newSample[0]){
@@ -81,8 +81,10 @@ public class LSLInput : MonoBehaviour
                         activeObject.pull();
                         break;
                     case "NULL_CLASS":
+                        Debug.Log("NULL_CLASS");
+                        activeObject.nullClassCase();
+                        break;
                     default:
-                        Debug.Log("Marker Pull");
                         break;
                 }
             }

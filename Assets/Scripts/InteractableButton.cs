@@ -26,5 +26,10 @@ public class InteractableButton : InteractableObject
         }
     }
 
+    public override void nullClassCase()
+    {
+
+    }
+
 
 }
