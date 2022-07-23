@@ -15,6 +15,9 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private GameState gameState;
 
+    [SerializeField]
+    private SelectedObject selectedObject;
+
     Controls controls;
 
     public Vector2InputEvent moveInputEvent;
@@ -48,6 +51,14 @@ public class InputController : MonoBehaviour
 
         controls.FreeMoveCamera.ToggleMenu.performed += OnToggleMenuPerformed;
         //controls.FreeMoveCamera.ToggleMenu.canceled += OnToggleMenuPerformed;
+
+        controls.FreeMoveCamera.ActivatePower.performed += OnActivatePower;
+
+        controls.FreeMoveCamera.PowerPush.performed += OnPowerPush;
+
+        controls.FreeMoveCamera.PowerPull.performed += OnPowerPull;
+
+        controls.FreeMoveCamera.PowerStay.performed += OnPowerStay;
     }
 
     private void OnDestroy()
@@ -78,6 +89,61 @@ public class InputController : MonoBehaviour
         if (gameState.gameStarted)
         {
             gameState.ToggleMenu(gui);
+        }
+    }
+
+    private void OnActivatePower(InputAction.CallbackContext context)
+    {
+        if (selectedObject != null)
+        {
+            InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
+            if (!interactableObj.isActive)
+            {
+                interactableObj.floatUp();
+            }
+            else
+            {
+                interactableObj.fallDown();
+            }
+        }
+
+    }
+
+    private void OnPowerPush(InputAction.CallbackContext context)
+    {
+        
+        if (selectedObject != null)
+        {
+            InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
+            if (interactableObj.isActive)
+            {
+                interactableObj.push();
+            }
+        }
+        
+    }
+
+    private void OnPowerPull(InputAction.CallbackContext context)
+    {
+        if (selectedObject != null)
+        {
+            InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
+            if (interactableObj.isActive)
+            {
+                interactableObj.pull();
+            }
+        }
+    }
+
+    private void OnPowerStay(InputAction.CallbackContext context)
+    {
+        if (selectedObject != null)
+        {
+            InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
+            if (interactableObj.isActive)
+            {
+                interactableObj.nullClassCase();
+            }
         }
     }
 }

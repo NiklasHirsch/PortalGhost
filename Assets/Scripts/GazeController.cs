@@ -12,13 +12,17 @@ public class GazeController : MonoBehaviour
     private GameObject lastSelectedObject = null;
     private Outline outline;
 
+    public LayerMask hitLayerMask;
+    public float radius;
+
     void Update()
     {
 
         if (selectedObject.selectedGameObject == null || !selectedObject.selectedGameObject.GetComponent<InteractableObject>().isInfloatingStart)
         {
             var cameraCenter = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, GetComponent<Camera>().nearClipPlane));
-            if (Physics.Raycast(cameraCenter, this.transform.forward, out hit, 200))
+            if (Physics.SphereCast(cameraCenter, radius, this.transform.forward, out hit, 200, hitLayerMask, QueryTriggerInteraction.UseGlobal))
+            //if (Physics.Raycast(cameraCenter, this.transform.forward, out hit, 200))
             {
 
                 GameObject obj = hit.transform.gameObject;
@@ -39,24 +43,6 @@ public class GazeController : MonoBehaviour
                    
                     removeOutline(lastSelectedObject);
                 }
-
-                /*
-                if (obj != activeObject)
-                {
-                    if (activeObject != null)
-                    {
-                        removeOutline(activeObject);
-                    }
-                    activeObject = obj;
-                    addOutline(obj);
-                }
-
-                else if (!isInteractableObject(obj))
-                {
-                    removeOutline(activeObject);
-                    return;
-                }
-                */
 
             }
             else

@@ -148,6 +148,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.4
   forceDistance: 1
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1001 &161342419
@@ -205,6 +206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 74115883887599661, guid: 09cca2077fc62d5478059aa51951efa7, type: 3}
+      propertyPath: selectedObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b3e3bf37bd51ce4dab2cd6905c77d7f, type: 2}
     - target: {fileID: 74115883887599661, guid: 09cca2077fc62d5478059aa51951efa7, type: 3}
       propertyPath: lookInputEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -370,6 +375,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!114 &212971931
@@ -411,6 +417,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.4
   forceDistance: 1
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &238093990 stripped
@@ -448,6 +455,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!114 &316583340
@@ -470,6 +478,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &366539297 stripped
@@ -497,6 +506,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.4
   forceDistance: 1
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &397038597 stripped
@@ -524,6 +534,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.4
   forceDistance: 1
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &401377927
@@ -665,6 +676,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &666251515 stripped
@@ -692,6 +704,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!114 &712911674
@@ -733,6 +746,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!114 &851672960
@@ -755,6 +769,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &874167208
@@ -829,6 +844,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.4
   forceDistance: 1
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &936547692 stripped
@@ -885,6 +901,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &975827967 stripped
@@ -912,6 +929,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.4
   forceDistance: 1
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!114 &989564220 stripped
@@ -945,6 +963,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!114 &1012554795
@@ -967,6 +986,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &1038635669 stripped
@@ -994,6 +1014,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.4
   forceDistance: 1
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &1075826214 stripped
@@ -1042,6 +1063,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!65 &1084217604
@@ -1098,6 +1120,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &1175960674
@@ -1237,6 +1260,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &1471495440 stripped
@@ -1280,6 +1304,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!114 &1545000695
@@ -1302,6 +1327,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &1610563460 stripped
@@ -1329,6 +1355,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.4
   forceDistance: 1
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1001 &1862161177
@@ -1441,6 +1468,10 @@ PrefabInstance:
     - target: {fileID: 8209890818278761519, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_TagString
       value: Elevator
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209890818356001018, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8209890818429676497, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_Mass
@@ -1593,6 +1624,10 @@ PrefabInstance:
     - target: {fileID: 8209890819862181714, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_Size.x
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209890819868750788, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8209890819928795084, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_TagString
@@ -1786,6 +1821,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!114 &1862161199
@@ -1808,6 +1844,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!114 &1862161202
@@ -1830,6 +1867,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &1868708889
@@ -2076,6 +2114,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.4
   forceDistance: 1
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1001 &1913946837
@@ -2160,6 +2199,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &1955656696
@@ -2354,6 +2394,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.2
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &2024221688 stripped
@@ -2381,6 +2422,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.4
   forceDistance: 1
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1 &2104936772 stripped
@@ -2408,6 +2450,7 @@ MonoBehaviour:
   hoverLevel: 0.5
   secondTillStabilized: 0.5
   forceDistance: 2
+  minDistanceObjToHuman: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
 --- !u!1001 &2401338273181640859
@@ -2597,8 +2640,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7215818162464673117, guid: 5ddf4236d8732c54cb2deb48578a3646, type: 3}
+      propertyPath: radius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215818162464673117, guid: 5ddf4236d8732c54cb2deb48578a3646, type: 3}
       propertyPath: springConnector
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215818162464673117, guid: 5ddf4236d8732c54cb2deb48578a3646, type: 3}
+      propertyPath: hitLayerMask.m_Bits
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 9107983892254556620, guid: 5ddf4236d8732c54cb2deb48578a3646, type: 3}
       propertyPath: m_Name
@@ -2663,6 +2714,18 @@ PrefabInstance:
     - target: {fileID: 9107983893360567696, guid: 5ddf4236d8732c54cb2deb48578a3646, type: 3}
       propertyPath: m_TagString
       value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107983894176865891, guid: 5ddf4236d8732c54cb2deb48578a3646, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107983894176865891, guid: 5ddf4236d8732c54cb2deb48578a3646, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.36144
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107983894176865891, guid: 5ddf4236d8732c54cb2deb48578a3646, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.653
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ddf4236d8732c54cb2deb48578a3646, type: 3}

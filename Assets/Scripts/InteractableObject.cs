@@ -29,8 +29,7 @@ public class InteractableObject : MonoBehaviour
     [Range(0,10)]
     private float forceDistance = 2f;
 
-    [SerializeField]
-    private float minDistanceObjToHuman = 2f;
+    private float minDistanceObjToHuman = 0.8f;
 
     [SerializeField]
     private float _durationPerUnitMoved = 0.1f;
@@ -63,9 +62,12 @@ public class InteractableObject : MonoBehaviour
             cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
             normalizedCameraViewVector = Camera.main.transform.forward.normalized;
 
-            if (velocity < 0)
+            
+            if (velocity < 0.0f)
             {
+                Debug.Log(velocity);
                 if (distanceToObj > minDistanceObjToHuman) {
+                    Debug.Log("Distance: " + distanceToObj);
                     distanceToObj += velocity;
                 }
             }
@@ -73,10 +75,11 @@ public class InteractableObject : MonoBehaviour
             {
                 distanceToObj += velocity;
             }
+            
 
             //transform.position = cameraCenter + normalizedCameraViewVector * distanceToObj;
-            
-            springJointObj.transform.position = cameraCenter + new Vector3(0, halfHeightOfObj, 0) + normalizedCameraViewVector * distanceToObj; //new Vector3(0, 0, halfHeightOfObj)
+
+            springJointObj.transform.position = cameraCenter + new Vector3(0, halfHeightOfObj, 0) + normalizedCameraViewVector * distanceToObj;
         }
     }
 
@@ -116,7 +119,7 @@ public class InteractableObject : MonoBehaviour
     {
         if (springJoint != null)
         {
-            Debug.Log("resetSpringJoint");
+            //Debug.Log("resetSpringJoint");
             Destroy(springJoint);
         }
     }
@@ -129,6 +132,15 @@ public class InteractableObject : MonoBehaviour
         {
             //halfHeightOfObj = gameObject.GetComponent<MeshFilter>().mesh.bounds.extents.z / 2;
             //springJointObj.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + halfHeightOfObj);
+
+            if (gameObject.GetComponent<MeshFilter>())
+            {
+                halfHeightOfObj = gameObject.GetComponent<MeshFilter>().mesh.bounds.extents.y / 2;
+            }
+            else
+            {
+                halfHeightOfObj = 0.5f;
+            }
 
             halfHeightOfObj = gameObject.GetComponent<MeshFilter>().mesh.bounds.extents.y / 2;
             springJointObj.transform.position = new Vector3(transform.position.x, transform.position.y + halfHeightOfObj, transform.position.z);
