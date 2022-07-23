@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+
 [System.Serializable]
 public class Vector2InputEvent : UnityEvent<float, float> { }
 
@@ -96,47 +97,99 @@ public class InputController : MonoBehaviour
     {
         if (gameState.gameStarted)
         {
-            /*
-            float m_Thrust = 700f;
-            GameObject cube = GameObject.Find("TestCube");
-            Rigidbody rigidbody = cube.GetComponent<Rigidbody>();
-            rigidbody.AddForce(transform.forward * m_Thrust);
-            */
+
             RaycastHit hit;
-            //GameObject ghost = GameObject.FindGameObjectWithTag("GhostCamera");
-            GameObject ghost = GameObject.Find("GhostCamera");
-            Camera ghostCam = ghost.GetComponent<Camera>();
-            var cameraCenter = ghostCam.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, ghostCam.nearClipPlane));
-            if (Physics.Raycast(cameraCenter, ghostCam.transform.forward, out hit, 100))
+
+            string inputPortalName = "HumanPortal";
+            string outputPortalName = "PortalWall";
+
+            GameObject inputPortal = GameObject.Find(inputPortalName);
+            GameObject outputPortal = GameObject.Find(outputPortalName);
+
+            Vector3 xxx = transform.TransformPoint(outputPortal.transform.forward);
+
+            Debug.DrawLine(outputPortal.transform.position, xxx, Color.white, 120f);
+
+            var cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
+            if (Physics.Raycast(cameraCenter, Camera.main.transform.forward, out hit, 100))
             {
-                if (hit.transform.gameObject.name == "PortalWall")
+                /*
+                if (hit.transform.gameObject.name == inputPortalName)
                 {
-                    Debug.DrawLine(hit.point, ghostCam.transform.position, Color.white, 10f);
-                    //GameObject obj = hit.transform.gameObject;
 
-                    Vector3 raycastVector =ghostCam.transform.position - hit.point;
+                    //Debug.DrawLine(cameraCenter, hit.point, Color.white, 15f);
 
+                    Vector3 fromCamToPortal = hit.point - cameraCenter;
 
+                    Vector3 portalSurfacePointertoHit = hit.point - hit.transform.gameObject.transform.position;
 
-                    GameObject portal = hit.transform.gameObject;
-                    Collider collider = portal.GetComponent<Collider>();
+                    Vector3 portalSurfacePointerToExit = outputPortal.transform.position + portalSurfacePointertoHit;
 
-                    //transform.position = GameObject.FindWithTag("PortalWall").transform.position;
-                    //transform.rotation = gameStorage.portal_wall_base_rotation;
-
-                    //collider.ClosestPointOnBounds(transform.position)
-                    Vector3 portalSurfaceVector = portal.transform.position - hit.point;
-                    Debug.DrawLine(hit.point, portal.transform.position, Color.white, 10f);
-
-                    Debug.Log(CalculateAngle(portalSurfaceVector, raycastVector));
+                    Debug.DrawLine(portalSurfacePointerToExit, outputPortal.transform.forward, Color.white, 300f);
                 }
+                */
             }
-        }
+
+
+
+
+                /*
+                float m_Thrust = 700f;
+                GameObject cube = GameObject.Find("TestCube");
+                Rigidbody rigidbody = cube.GetComponent<Rigidbody>();
+                rigidbody.AddForce(transform.forward * m_Thrust);
+                */
+                /*
+                RaycastHit hit, hitFromPortal;
+                //GameObject ghost = GameObject.FindGameObjectWithTag("GhostCamera");
+                GameObject ghost = GameObject.Find("GhostCamera");
+                Camera ghostCam = ghost.GetComponent<Camera>();
+                var cameraCenter = ghostCam.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, ghostCam.nearClipPlane));
+                if (Physics.Raycast(cameraCenter, ghostCam.transform.forward, out hit, 100))
+                {
+                    if (hit.transform.gameObject.name == "PortalWall")
+                    {
+                        //Debug.DrawLine(hit.point, ghostCam.transform.position, Color.white, 10f);
+                        //GameObject obj = hit.transform.gameObject;
+
+                        Vector3 raycastVector = ghostCam.transform.position - hit.point;
+
+
+
+                        GameObject portal = hit.transform.gameObject;
+                        Collider collider = portal.GetComponent<Collider>();
+
+                        //transform.position = GameObject.FindWithTag("PortalWall").transform.position;
+                        //transform.rotation = gameStorage.portal_wall_base_rotation;
+
+                        //collider.ClosestPointOnBounds(transform.position)
+                        Vector3 portalSurfaceVector = portal.transform.position - hit.point;
+                        //Debug.DrawLine(hit.point, portal.transform.position, Color.white, 10f);
+
+                        double angle = CalculateAngle(portalSurfaceVector, raycastVector);
+
+                        Vector3 vectorFromPortal = Quaternion.AngleAxis((float)angle, Vector3.forward) * Vector3.right;
+
+
+
+                        Vector3 relativeVectorFromCenterToHit = hit.point - portal.transform.position;
+                        Vector3 realtvePointOnHumanPortal = GameObject.Find("HumanPortal").transform.position + relativeVectorFromCenterToHit;
+                        Debug.DrawLine(realtvePointOnHumanPortal, GameObject.Find("HumanPortal").transform.up, Color.white, 10f);
+
+
+                        if (Physics.Raycast(hit.point, GameObject.Find("HumanPortal").transform.forward, out hitFromPortal, 100))
+                        {
+
+                        }
+                    }
+                }
+                */
+            }
     }
 
     private double CalculateAngle(Vector3 vector1, Vector3 vector2)
     {
-        return Vector3.Angle(vector1, vector2);
+        return Math.Round(Vector3.Angle(vector1, vector2), 2);
         /*
         Debug.Log("v1: " + vector1 + "v2: " + vector2);
         double dotProduct = (vector1.x * vector2.x) + (vector1.y * vector2.y) + (vector1.z + vector2.z);
