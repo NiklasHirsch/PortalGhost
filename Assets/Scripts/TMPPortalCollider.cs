@@ -10,15 +10,17 @@ public class TMPPortalCollider : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameObject portal = GameObject.FindWithTag("PortalWall");
+        GameObject portalHuman = GameObject.FindWithTag("HumanPortal");
         Collider collider = portal.GetComponent<Collider>();
-        Debug.Log(collider.ClosestPointOnBounds(transform.position));
+        //Debug.Log(collider.ClosestPointOnBounds(transform.position));
 
         //Debug.Log("Cube entered trigger from: " + other.gameObject.name);
         if (other.gameObject.name == "PortalWall")
         {
             //transform.position = GameObject.FindWithTag("PortalWall").transform.position;
             //transform.rotation = gameStorage.portal_wall_base_rotation;
-            transform.position = collider.ClosestPointOnBounds(transform.position);
+            Vector3 realtiveVector = portal.transform.position - collider.ClosestPointOnBounds(transform.position);
+            transform.position = portalHuman.transform.position + realtiveVector;
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
     }
