@@ -40,7 +40,6 @@ public class InteractableObject : MonoBehaviour
     }
 
     public void Update(){
-        Debug.Log(isActive);
         if (isActive) {
             // Central point of camera
             cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));

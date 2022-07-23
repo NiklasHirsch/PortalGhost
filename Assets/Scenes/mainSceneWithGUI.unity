@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 913730396}
   - component: {fileID: 913730395}
   - component: {fileID: 913730394}
+  - component: {fileID: 913730399}
   - component: {fileID: 913730393}
   - component: {fileID: 913730398}
   m_Layer: 0
@@ -512,6 +513,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStorage: {fileID: 11400000, guid: 588e2afb5c7ce46cb8a5e708546c397d, type: 2}
+--- !u!114 &913730399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913730392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15db54b918035b43b1edab22c6b680b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
+  minimalYitter: -0.01
+  maximalYitter: 0.01
+  floatAtStart: 0
+  hoverLevel: 0.5
+  secondTillStabilized: 0.2
+  forceDistance: 2
 --- !u!114 &989564220 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4431075353930691077, guid: 67d63477eb4f3314aabc3112238cd469, type: 3}
