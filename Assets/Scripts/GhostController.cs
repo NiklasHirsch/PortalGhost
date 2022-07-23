@@ -27,8 +27,10 @@ public class GhostController : MonoBehaviour
     bool portal_wall_entered = false;
     int timer = 0;
 
-    Vector3 inate_position;
-    Vector3 inate_forward;
+    Vector3 innate_position;
+    Vector3 innate_forward;
+
+    Vector3 innate_human_position;
 
     private void Update()
     {
@@ -65,21 +67,28 @@ public class GhostController : MonoBehaviour
             Vector3 dir = (GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position).normalized;
             Vector3 distance = GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position;
 
-            //GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Camera.main.transform.rotation * Quaternion.LookRotation(dir);
 
+            //rotate PortalCamera depending on human to HumanPortal directional vector
             //GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation * Quaternion.LookRotation(dir);
+
+            // keep camera rotation locked (workaround to counteract VR-Tracking)
             GameObject.FindWithTag("PortalCamera").transform.rotation = portal_wall_base_rotation;
 
-            GameObject.FindWithTag("PortalCamera").transform.position = inate_position - (GameObject.FindWithTag("PortalCamera").transform.forward * distance.magnitude);
+            
+            GameObject.FindWithTag("PortalCamera").transform.position = innate_position - (GameObject.FindWithTag("PortalCamera").transform.forward * distance.magnitude);
             GameObject.FindWithTag("PortalCameraView").GetComponent<Camera>().nearClipPlane = distance.magnitude;
-
-
+            // adjust FoV depending on the humans distance to the HumanPortal
+            GameObject.FindWithTag("PortalCameraView").GetComponent<Camera>().fieldOfView = (float)(2 * Math.Atan(60 / (2 * distance.magnitude)));
+            // account for VR-Tracking (position)
+            Vector3 v = Camera.main.transform.position - innate_human_position;
+            GameObject.FindWithTag("PortalCamera").transform.position += GameObject.FindWithTag("PortalCamera").transform.right * v.x;
+            GameObject.FindWithTag("PortalCamera").transform.position += GameObject.FindWithTag("PortalCamera").transform.up * v.y;
+            // account for VR-Tracking (rotation)
             GameObject.FindWithTag("PortalCamera").transform.rotation *= Camera.main.transform.rotation;
 
-            GameObject.FindWithTag("PortalCameraView").GetComponent<Camera>().fieldOfView = (float)(2 * Math.Atan(60/(2 * distance.magnitude)));
 
 
-            Debug.Log($"GhostController: {distance}");
+            Debug.Log($"GhostController: {v}");
 
             if (timer > 0)
             {
@@ -118,13 +127,13 @@ public class GhostController : MonoBehaviour
             GameObject.FindWithTag("PortalCamera").transform.position = transform.position;
             GameObject.FindWithTag("PortalCamera").transform.rotation = transform.rotation;
 
-            inate_position = transform.position;
-            inate_forward = transform.forward;
+            innate_position = transform.position;
+            innate_forward = transform.forward;
+            innate_human_position = Camera.main.transform.position;
 
             //GameObject.FindWithTag("HumanPortal").transform.position = human_portal_pos;
 
-
-
+            // take account for HumanPortal rotation (not implemented yet)
             //human_portal_base_rotation = GameObject.FindWithTag("HumanPortal").transform.rotation;
         }
         else
