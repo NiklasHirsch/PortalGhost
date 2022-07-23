@@ -62,6 +62,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TMPTest"",
+                    ""type"": ""Button"",
+                    ""id"": ""f47e5489-26e8-485c-89ce-09b232a08640"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""ToggleMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""39284927-a241-413f-a887-7f0128acb997"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TMPTest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_FreeMoveCamera_Move = m_FreeMoveCamera.FindAction("Move", throwIfNotFound: true);
         m_FreeMoveCamera_CreatePortal = m_FreeMoveCamera.FindAction("CreatePortal", throwIfNotFound: true);
         m_FreeMoveCamera_ToggleMenu = m_FreeMoveCamera.FindAction("ToggleMenu", throwIfNotFound: true);
+        m_FreeMoveCamera_TMPTest = m_FreeMoveCamera.FindAction("TMPTest", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +248,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_FreeMoveCamera_Move;
     private readonly InputAction m_FreeMoveCamera_CreatePortal;
     private readonly InputAction m_FreeMoveCamera_ToggleMenu;
+    private readonly InputAction m_FreeMoveCamera_TMPTest;
     public struct FreeMoveCameraActions
     {
         private @Controls m_Wrapper;
@@ -235,6 +257,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_FreeMoveCamera_Move;
         public InputAction @CreatePortal => m_Wrapper.m_FreeMoveCamera_CreatePortal;
         public InputAction @ToggleMenu => m_Wrapper.m_FreeMoveCamera_ToggleMenu;
+        public InputAction @TMPTest => m_Wrapper.m_FreeMoveCamera_TMPTest;
         public InputActionMap Get() { return m_Wrapper.m_FreeMoveCamera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,6 +279,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @ToggleMenu.started -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnToggleMenu;
                 @ToggleMenu.performed -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnToggleMenu;
                 @ToggleMenu.canceled -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnToggleMenu;
+                @TMPTest.started -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnTMPTest;
+                @TMPTest.performed -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnTMPTest;
+                @TMPTest.canceled -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnTMPTest;
             }
             m_Wrapper.m_FreeMoveCameraActionsCallbackInterface = instance;
             if (instance != null)
@@ -272,6 +298,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @ToggleMenu.started += instance.OnToggleMenu;
                 @ToggleMenu.performed += instance.OnToggleMenu;
                 @ToggleMenu.canceled += instance.OnToggleMenu;
+                @TMPTest.started += instance.OnTMPTest;
+                @TMPTest.performed += instance.OnTMPTest;
+                @TMPTest.canceled += instance.OnTMPTest;
             }
         }
     }
@@ -282,5 +311,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnCreatePortal(InputAction.CallbackContext context);
         void OnToggleMenu(InputAction.CallbackContext context);
+        void OnTMPTest(InputAction.CallbackContext context);
     }
 }

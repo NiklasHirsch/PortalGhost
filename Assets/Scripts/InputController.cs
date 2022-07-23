@@ -47,7 +47,8 @@ public class InputController : MonoBehaviour
         controls.FreeMoveCamera.CreatePortal.canceled += OnCreatePortalPerformed;
 
         controls.FreeMoveCamera.ToggleMenu.performed += OnToggleMenuPerformed;
-        //controls.FreeMoveCamera.ToggleMenu.canceled += OnToggleMenuPerformed;
+
+        controls.FreeMoveCamera.TMPTest.performed += OnTMPTest;
     }
 
     private void OnDestroy()
@@ -57,20 +58,29 @@ public class InputController : MonoBehaviour
 
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
-        Vector2 moveInput = context.ReadValue<Vector2>();
-        moveInputEvent.Invoke(moveInput.x, moveInput.y);
+        if (gameState.gameStarted)
+        {
+            Vector2 moveInput = context.ReadValue<Vector2>();
+            moveInputEvent.Invoke(moveInput.x, moveInput.y);
+        }
     }
 
     private void OnLookPerformed(InputAction.CallbackContext context)
     {
-        Vector2 lookInput = context.ReadValue<Vector2>();
-        lookInputEvent.Invoke(lookInput.x, lookInput.y);
+        if (gameState.gameStarted)
+        {
+            Vector2 lookInput = context.ReadValue<Vector2>();
+            lookInputEvent.Invoke(lookInput.x, lookInput.y);
+        }
     }
 
     private void OnCreatePortalPerformed(InputAction.CallbackContext context)
     {
-        var createPortalInput = context.ReadValue<float>();
-        createPortalInputEvent.Invoke(createPortalInput);
+        if (gameState.gameStarted)
+        {
+            var createPortalInput = context.ReadValue<float>();
+            createPortalInputEvent.Invoke(createPortalInput);
+        }
     }
 
     private void OnToggleMenuPerformed(InputAction.CallbackContext context)
@@ -78,6 +88,17 @@ public class InputController : MonoBehaviour
         if (gameState.gameStarted)
         {
             gameState.ToggleMenu(gui);
+        }
+    }
+
+    private void OnTMPTest(InputAction.CallbackContext context)
+    {
+        if (gameState.gameStarted)
+        {
+            float m_Thrust = 700f;
+            GameObject cube = GameObject.Find("TestCube");
+            Rigidbody rigidbody = cube.GetComponent<Rigidbody>();
+            rigidbody.AddForce(transform.forward * m_Thrust);
         }
     }
 }

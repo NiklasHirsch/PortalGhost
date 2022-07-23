@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GhostController : MonoBehaviour
 {
+
+    [SerializeField]
+    private GameStorage gameStorage;
+
+
     public float moveSpeed = 5;
     public float horizontalCameraSensitivity = 20;
     public float verticalCameraSensitivity = 20;
@@ -71,7 +76,7 @@ public class GhostController : MonoBehaviour
             GameObject.FindWithTag("PortalCamera").transform.position = GameObject.FindWithTag("PortalWall").transform.position + distance;
 
 
-            Debug.Log($"GhostController: {Camera.main.transform.rotation}");
+            //Debug.Log($"GhostController: {Camera.main.transform.rotation}");
 
             if (timer > 0)
             {
@@ -106,6 +111,7 @@ public class GhostController : MonoBehaviour
             GameObject.FindWithTag("PortalWall").transform.position = transform.position; // - transform.forward; spawn at distance
             GameObject.FindWithTag("PortalWall").transform.rotation = transform.rotation;
             portal_wall_base_rotation = transform.rotation;
+            gameStorage.portal_wall_base_rotation = portal_wall_base_rotation;
 
             GameObject.FindWithTag("PortalCamera").transform.position = transform.position;
             GameObject.FindWithTag("PortalCamera").transform.rotation = transform.rotation;
@@ -141,7 +147,7 @@ public class GhostController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //
+        Debug.Log("stay");
     }
 
     private void OnTriggerExit(Collider other)
