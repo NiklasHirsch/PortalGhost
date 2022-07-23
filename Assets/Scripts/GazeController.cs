@@ -8,25 +8,39 @@ public class GazeController : MonoBehaviour
     [SerializeField]
     private SelectedObject selectedObject;
 
-
-    [SerializeField]
-    private GameObject springConnector;
-
     private RaycastHit hit;
-    private GameObject activeObject = null;
+    private GameObject lastSelectedObject = null;
     private Outline outline;
 
     void Update()
     {
-        /*
-        if (!selectedObject.selectedGameObject.GetComponent<InteractableObject>().isActive)
-        {*/
-            var cameraCenter = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, GetComponent<Camera>().nearClipPlane));
-            if (Physics.Raycast(cameraCenter, this.transform.forward, out hit, 100))
-            {
-               
-                GameObject obj = hit.transform.gameObject;
 
+        if (selectedObject.selectedGameObject == null || !selectedObject.selectedGameObject.GetComponent<InteractableObject>().isInfloatingStart)
+        {
+            var cameraCenter = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, GetComponent<Camera>().nearClipPlane));
+            if (Physics.Raycast(cameraCenter, this.transform.forward, out hit, 200))
+            {
+
+                GameObject obj = hit.transform.gameObject;
+                if (isInteractableObject(obj) && obj != lastSelectedObject)
+                {
+                    addOutline(obj);
+                    selectedObject.selectedGameObject = obj;
+
+                    removeOutline(lastSelectedObject);
+                    
+                    lastSelectedObject = obj;
+                }
+
+
+                if (!isInteractableObject(obj))
+                {
+                    selectedObject.selectedGameObject = null;
+                   
+                    removeOutline(lastSelectedObject);
+                }
+
+                /*
                 if (obj != activeObject)
                 {
                     if (activeObject != null)
@@ -42,16 +56,19 @@ public class GazeController : MonoBehaviour
                     removeOutline(activeObject);
                     return;
                 }
-
+                */
 
             }
             else
             {
-                removeOutline(activeObject);
-                activeObject = null;
+                removeOutline(lastSelectedObject);
+                lastSelectedObject = null;
                 selectedObject.selectedGameObject = null;
             }
-        //}
+        }
+        /*else {
+            addOutline(selectedObject.selectedGameObject);
+        }*/
     }
 
     private void removeOutline(GameObject theObject)
@@ -73,8 +90,6 @@ public class GazeController : MonoBehaviour
             outline = myObject.GetComponent<Outline>();
             if (outline != null)
             {
-                selectedObject.selectedGameObject = myObject;
-
                 outline.OutlineWidth = 6f;
             }
         }
@@ -82,13 +97,17 @@ public class GazeController : MonoBehaviour
 
     private bool isInteractableObject(GameObject myObject)
     {
-        if (myObject != null && myObject.GetComponent<InteractableObject>() != null && myObject.GetComponent<Outline>() == null)
+        if (myObject != null && myObject.GetComponent<InteractableObject>() != null)
         {
-            myObject.AddComponent<Outline>();
-            outline.OutlineMode = Outline.Mode.OutlineAll;
-            outline.OutlineColor = Color.white;
-            outline.OutlineWidth = 0f;
+            if (myObject.GetComponent<Outline>() == null)
+            {
+                myObject.AddComponent<Outline>();
+                outline.OutlineMode = Outline.Mode.OutlineAll;
+                outline.OutlineColor = Color.white;
+                outline.OutlineWidth = 0f;
+            }
+            return true;
         }
-        return (myObject.GetComponent<Outline>() != null);
+        return false;
     }
 }

@@ -8,6 +8,7 @@ public class InteractableObject : MonoBehaviour
 {
     //basic obj variables
     public bool isActive = false;
+    public bool isInfloatingStart = false;
  
     [Header("Shake Settings")]
     public float minimalYitter = -0.01f;
@@ -29,6 +30,9 @@ public class InteractableObject : MonoBehaviour
     private float forceDistance = 2f;
 
     [SerializeField]
+    private float minDistanceObjToHuman = 2f;
+
+    [SerializeField]
     private float _durationPerUnitMoved = 0.1f;
     private bool _pullObjectRuntineRunning = false;
 
@@ -43,6 +47,7 @@ public class InteractableObject : MonoBehaviour
     [Header("Spring Settings")]
     private GameObject springJointObj;
     private SpringJoint springJoint;
+    private float halfHeightOfObj;
     [SerializeField]
     private int standarSpringVal = 4000;
 
@@ -53,18 +58,25 @@ public class InteractableObject : MonoBehaviour
     }
 
     public void FixedUpdate(){
-        if (isActive) {
+        if (isActive && springJointObj != null) {
             // Central point of camera
             cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
             normalizedCameraViewVector = Camera.main.transform.forward.normalized;
 
-            distanceToObj += velocity;
-            //transform.position = cameraCenter + normalizedCameraViewVector * distanceToObj;
-
-            if (springJointObj != null) {
-                springJointObj.transform.position = cameraCenter + normalizedCameraViewVector * distanceToObj;
+            if (velocity < 0)
+            {
+                if (distanceToObj > minDistanceObjToHuman) {
+                    distanceToObj += velocity;
+                }
             }
+            else
+            {
+                distanceToObj += velocity;
+            }
+
+            //transform.position = cameraCenter + normalizedCameraViewVector * distanceToObj;
             
+            springJointObj.transform.position = cameraCenter + new Vector3(0, halfHeightOfObj, 0) + normalizedCameraViewVector * distanceToObj; //new Vector3(0, 0, halfHeightOfObj)
         }
     }
 
@@ -74,9 +86,10 @@ public class InteractableObject : MonoBehaviour
 
     public virtual void floatUp() {
         Debug.Log("float up");
+        isInfloatingStart = true;
 
         if (!isActive) {
-            transform.GetComponent<Rigidbody>().isKinematic = true;
+            //transform.GetComponent<Rigidbody>().isKinematic = true;
             StartCoroutine(MoveOverSeconds(gameObject, new Vector3(transform.position.x, (transform.position.y + hoverLevel), transform.position.z), secondTillStabilized, doAfterFloat));
         }
     }
@@ -103,7 +116,8 @@ public class InteractableObject : MonoBehaviour
     {
         if (springJoint != null)
         {
-            springJoint.spring = 0;
+            Debug.Log("resetSpringJoint");
+            Destroy(springJoint);
         }
     }
 
@@ -113,16 +127,51 @@ public class InteractableObject : MonoBehaviour
 
         if (springJointObj != null)
         {
-            float heightOfObj = springJointObj.GetComponent<MeshFilter>().mesh.bounds.extents.z;
-            springJointObj.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + heightOfObj / 2);
+            //halfHeightOfObj = gameObject.GetComponent<MeshFilter>().mesh.bounds.extents.z / 2;
+            //springJointObj.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + halfHeightOfObj);
 
-            springJoint.spring = standarSpringVal;
-            springJoint = springJointObj.GetComponent<SpringJoint>();
-            springJoint.connectedBody = this.gameObject.GetComponent<Rigidbody>();
+            halfHeightOfObj = gameObject.GetComponent<MeshFilter>().mesh.bounds.extents.y / 2;
+            springJointObj.transform.position = new Vector3(transform.position.x, transform.position.y + halfHeightOfObj, transform.position.z);
 
+            // Pos of Object after floating
+            posAfterFloat = transform.position;
+
+            // Central point of camera
+            cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
+
+            // Distance from Camera center to the object
+            distanceToObj = Vector3.Distance(cameraCenter, posAfterFloat);
+
+
+            addNewspringJoint();
+            
         }
     }
 
+    private void addNewspringJoint()
+    {
+        if (springJointObj.GetComponent<SpringJoint>() != null)
+        {
+            return;
+        }
+        Debug.Log("addSpringJoint");
+        springJointObj.AddComponent<SpringJoint>();
+
+        springJoint = springJointObj.GetComponent<SpringJoint>();
+
+        springJoint.connectedBody = gameObject.GetComponent<Rigidbody>();
+        springJoint.spring = 10000;
+        springJoint.anchor = new Vector3(0, 0.5f, 0);
+        springJoint.autoConfigureConnectedAnchor = false;
+        springJoint.damper = 500;
+        springJoint.minDistance = 0;
+        springJoint.maxDistance = 0;
+        springJoint.tolerance = 0.025f;
+        springJoint.enableCollision = false;
+        springJoint.enablePreprocessing = true;
+        springJoint.massScale = 1;
+        springJoint.connectedMassScale = 1;
+    }
 
 
     // Moves an Object with a Vetor over a time span seconds
@@ -150,9 +199,11 @@ public class InteractableObject : MonoBehaviour
 
         resetSpringJointSettings();
 
-        transform.GetComponent<Rigidbody>().isKinematic = false;
+        //transform.GetComponent<Rigidbody>().isKinematic = false;
         isActive = false;
+        isInfloatingStart = false;
     }
+
     public virtual void pull() {
         Debug.Log("pull");
         if(isActive){

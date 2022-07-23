@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -362,6 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -402,6 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -438,6 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -459,6 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -485,6 +490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -511,6 +517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -532,8 +539,6 @@ GameObject:
   - component: {fileID: 401377931}
   - component: {fileID: 401377930}
   - component: {fileID: 401377929}
-  - component: {fileID: 401377928}
-  - component: {fileID: 401377934}
   m_Layer: 0
   m_Name: SpringConnector
   m_TagString: SpringJoint
@@ -541,30 +546,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!145 &401377928
-SpringJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401377927}
-  m_ConnectedBody: {fileID: 1150683656}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.013999999, y: 0.46898055, z: 0.034032583}
-  serializedVersion: 2
-  m_Spring: 4000
-  m_Damper: 500
-  m_MinDistance: 0
-  m_MaxDistance: 0
-  m_Tolerance: 0.025
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!54 &401377929
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -601,7 +582,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401377927}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -652,34 +633,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401377927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.395, y: 1.312, z: 2.754967}
+  m_LocalPosition: {x: -0.395, y: 1.278, z: 1.662}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &401377934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401377927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15db54b918035b43b1edab22c6b680b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActive: 0
-  minimalYitter: -0.01
-  maximalYitter: 0.01
-  floatAtStart: 0
-  hoverLevel: 0.5
-  secondTillStabilized: 0.2
-  forceDistance: 2
-  _durationPerUnitMoved: 0.1
-  standarSpringVal: 4000
 --- !u!1 &466438579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8208568393717901213, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
@@ -698,6 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -724,6 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -764,6 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -785,6 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -858,6 +822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -913,6 +878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -939,6 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -971,6 +938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -992,6 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1018,6 +987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1065,6 +1035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1120,6 +1091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1128,11 +1100,6 @@ MonoBehaviour:
   forceDistance: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
---- !u!54 &1150683656 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 8209890819576240131, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
-  m_PrefabInstance: {fileID: 1862161177}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1175960674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,6 +1230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1305,6 +1273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1326,6 +1295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1352,6 +1322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1449,7 +1420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8205810356401131656, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.046
+      value: 0.812
       objectReference: {fileID: 0}
     - target: {fileID: 8209193175505918382, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_Name
@@ -1808,6 +1779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1829,6 +1801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1850,6 +1823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2095,6 +2069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2103,6 +2078,63 @@ MonoBehaviour:
   forceDistance: 1
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
+--- !u!1001 &1913946837
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1469595024754548170, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_Name
+      value: HumanPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469595024754548174, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469595024754548174, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469595024754548174, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469595024754548174, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469595024754548174, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469595024754548174, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469595024754548174, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469595024754548174, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469595024754548174, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469595024754548174, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469595024754548174, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
 --- !u!1 &1938035113 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8208347699964984788, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
@@ -2121,6 +2153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2314,6 +2347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2340,6 +2374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2366,6 +2401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  isInfloatingStart: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0

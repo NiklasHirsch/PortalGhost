@@ -72,7 +72,7 @@ public class GhostController : MonoBehaviour
             GameObject.FindWithTag("PortalCamera").transform.position = GameObject.FindWithTag("PortalWall").transform.position + distance;
 
 
-            Debug.Log($"GhostController: {Camera.main.transform.rotation}");
+            //Debug.Log($"GhostController: {Camera.main.transform.rotation}");
 
             if (timer > 0)
             {
