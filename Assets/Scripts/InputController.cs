@@ -23,7 +23,7 @@ public class InputController : MonoBehaviour
     public Vector2InputEvent moveInputEvent;
     public Vector2InputEvent lookInputEvent;
     public ButtonInputEvent createPortalInputEvent;
-    protected GameObject gui;
+    public GameObject gui;
 
     private void Awake()
     {

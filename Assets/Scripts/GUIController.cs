@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -9,12 +10,19 @@ public class GUIController : MonoBehaviour
     [SerializeField]
     private GameState gameState;
 
+    public AudioMixer MasterMixer;
+
     Button buttonResume;
     Button buttonNewGame;
     Button buttonSettings;
     Button buttonQuit;
     Button buttonSettingsBack;
 
+    Button buttonVictoryQuit;
+    Button buttonVictoryNewGame;
+
+    VisualElement noVictoryView;
+    VisualElement victoryView;
     VisualElement menuBody;
     VisualElement mainButtons;
     VisualElement settingsView;
@@ -25,21 +33,24 @@ public class GUIController : MonoBehaviour
 
         root.Q<Slider>("MasterVolumeSlider").RegisterValueChangedCallback(v =>
         {
-            var oldValue = v.previousValue;
-            var newValue = v.newValue;
-            Debug.Log(newValue);
+            SetMasterVolume(v.newValue);
         });
 
 
         menuBody = root.Q<VisualElement>("ButtonContainer");
         mainButtons = root.Q<VisualElement>("MainButtons");
         settingsView = root.Q<VisualElement>("Settings");
+        victoryView = root.Q<VisualElement>("victory");
+        noVictoryView = root.Q<VisualElement>("root");
 
         buttonResume = root.Q<Button>("ButtonResume");
         buttonNewGame = root.Q<Button>("ButtonNewGame");
         buttonSettings = root.Q<Button>("ButtonSettings");
         buttonQuit = root.Q<Button>("ButtonQuit");
         buttonSettingsBack = root.Q<Button>("SettingsBackButton");
+
+        buttonVictoryQuit = root.Q<Button>("ButtonVictoryQuit");
+        buttonVictoryNewGame = root.Q<Button>("ButtonVictoryNewGame");
 
         if (!gameState.gameStarted)
         {
@@ -59,6 +70,9 @@ public class GUIController : MonoBehaviour
         buttonQuit.clicked += OnQuit;
         buttonNewGame.clicked += OnNewGame;
         buttonSettingsBack.clicked += OnSettingsBack;
+
+        buttonVictoryNewGame.clicked += OnNewGame;
+        buttonVictoryQuit.clicked += OnQuit;
     }
 
     //The lockState has to be checked in Update() for now because on Game Startup the lockState somehow always switches to CursorLockMode.Locked
@@ -69,6 +83,11 @@ public class GUIController : MonoBehaviour
             UnityEngine.Cursor.lockState = CursorLockMode.None;
             UnityEngine.Cursor.visible = true;
         }
+    }
+
+    public void victory() {
+        noVictoryView.style.display = DisplayStyle.None;
+        victoryView.style.display = DisplayStyle.Flex;
     }
 
     private void OnDisable()
@@ -118,4 +137,8 @@ public class GUIController : MonoBehaviour
         Application.Quit();
     }
 
+    public void SetMasterVolume(float volume)
+    {
+        MasterMixer.SetFloat("master", volume);
+    }
 }

@@ -6,6 +6,10 @@ using System;
 
 public class setDisplayNumbers : MonoBehaviour
 {
+    [SerializeField]
+    private GameState gameState;
+
+
     public TMP_Text displayText;
     public TMP_Text finishText;
     public GameObject button1;
@@ -37,6 +41,10 @@ public class setDisplayNumbers : MonoBehaviour
         {
             displayText.color = new Color(0, 200, 0, 255);
             finishText.text = "You did it!";
+
+            GameObject gui = GameObject.Find("GameManager").GetComponent<InputController>().gui;
+            gameState.ToggleMenu(gui);
+            gui.GetComponent<GUIController>().victory();
         } 
         else
         {
