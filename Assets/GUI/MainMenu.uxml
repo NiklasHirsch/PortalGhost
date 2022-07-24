@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/GUI/StyleMain.uss?fileID=7433441132597879392&amp;guid=fc000b23995fa4fe49a4fbe1d023be11&amp;type=3#StyleMain" />
-    <ui:VisualElement name="root" style="width: 100%; height: 100%; justify-content: center;">
+    <ui:VisualElement name="root" style="width: 100%; height: 100%; justify-content: center; display: flex;">
         <ui:VisualElement name="LogoContainer" style="margin-bottom: 0; align-items: center; flex-grow: 1; justify-content: flex-end; margin-left: 0; margin-right: 0; margin-top: 0;">
             <ui:Label text="PortalGhost" display-tooltip-when-elided="true" style="font-size: 100px; color: rgb(255, 255, 255); justify-content: flex-start;" />
         </ui:VisualElement>
@@ -15,6 +15,17 @@
                 <ui:Slider picking-mode="Ignore" label="Master Volume" value="70" high-value="100" show-input-field="false" name="MasterVolumeSlider" style="width: 50%; scale: 1.2 1.2; color: rgb(255, 255, 255);" />
                 <ui:Button text="Back" display-tooltip-when-elided="true" name="SettingsBackButton" style="margin-top: 50px;" />
             </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="victory" style="width: 100%; height: 100%; display: none;">
+        <ui:VisualElement name="VictoryText" style="flex-grow: 1; justify-content: center; align-items: center;">
+            <ui:Label text="Congratulations,&#10;you managed to escape!&#10;" display-tooltip-when-elided="true" style="font-size: 40px; color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
+            <ui:Label text="With helping you break free,&#10; the trapped soul finally was able to move on and find peace." display-tooltip-when-elided="true" style="color: rgb(255, 255, 255); font-size: 25px; justify-content: flex-start; align-items: center; -unity-text-align: upper-center;" />
+            <ui:Label text="Thank you for playing our game!" display-tooltip-when-elided="true" style="font-size: 18px; margin-top: 50px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="VictoryButtons" style="align-items: center; justify-content: center; display: flex; flex-grow: 1; background-color: rgb(56, 56, 56);">
+            <ui:Button text="New Game" display-tooltip-when-elided="true" name="ButtonVictoryNewGame" />
+            <ui:Button text="Quit" display-tooltip-when-elided="true" name="ButtonVictoryQuit" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

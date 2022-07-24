@@ -1654,6 +1654,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2321190375817145603, guid: 1a05a65c32a9a4d6c9ddfe0a5427c624, type: 3}
+      propertyPath: MasterMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 107dc21883e834d4a91f58b225df2ed0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a05a65c32a9a4d6c9ddfe0a5427c624, type: 3}
 --- !u!1 &1150683647 stripped
@@ -2218,6 +2222,10 @@ PrefabInstance:
       value: Green Point light
       objectReference: {fileID: 0}
     - target: {fileID: 8209890818156928478, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209890818156928478, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_TagString
       value: PPKey
       objectReference: {fileID: 0}
@@ -2231,7 +2239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8209890818356001018, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8209890818429676497, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_Mass
@@ -2370,6 +2378,10 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8209890819765256055, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209890819765256055, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_TagString
       value: PPKey
       objectReference: {fileID: 0}
@@ -2391,7 +2403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8209890819868750788, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8209890819928795084, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_TagString
@@ -2553,6 +2565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af56af378613ae448443736e5c01ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: {fileID: 0}
   displayText: {fileID: 1862161183}
   finishText: {fileID: 1955656698}
   button1: {fileID: 1862161195}

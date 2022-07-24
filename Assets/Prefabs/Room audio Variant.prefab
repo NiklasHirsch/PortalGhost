@@ -369,7 +369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8209890819608171810, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_Name
-      value: Room audio
+      value: Room audio Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8209890819608171811, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_RootOrder
@@ -850,6 +850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af56af378613ae448443736e5c01ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: {fileID: 11400000, guid: 45eaad100c9f746f18a12de23e0b680a, type: 2}
   displayText: {fileID: 3359047048207644071}
   finishText: {fileID: 1955656698}
   button1: {fileID: 3359047047505282345}
