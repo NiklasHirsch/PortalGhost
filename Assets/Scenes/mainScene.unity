@@ -3000,7 +3000,7 @@ MonoBehaviour:
   hitLayerMask:
     serializedVersion: 2
     m_Bits: 2147483647
-  radius: 0.2
+  radius: 0.15
 --- !u!1001 &2401338273181640859
 PrefabInstance:
   m_ObjectHideFlags: 0

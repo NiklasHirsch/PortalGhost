@@ -15,6 +15,8 @@ public class GazeController : MonoBehaviour
     public LayerMask hitLayerMask;
     public float radius;
 
+    private bool hitNonInteractableLastTime = true;
+
     void Update()
     {
 
@@ -24,7 +26,7 @@ public class GazeController : MonoBehaviour
             if (Physics.SphereCast(Camera.main.transform.position, radius, Camera.main.transform.forward, out hit, 200, hitLayerMask, QueryTriggerInteraction.UseGlobal))
             //if (Physics.Raycast(cameraCenter, this.transform.forward, out hit, 200))
             {
-
+                
                 GameObject obj = hit.transform.gameObject;
                 if (isInteractableObject(obj) && obj != lastSelectedObject)
                 {
@@ -34,13 +36,27 @@ public class GazeController : MonoBehaviour
                     removeOutline(lastSelectedObject);
                     
                     lastSelectedObject = obj;
+                    hitNonInteractableLastTime = false;
                 }
 
+                if (isInteractableObject(obj) && obj == lastSelectedObject && hitNonInteractableLastTime)
+                {
+                    removeOutline(lastSelectedObject);
+
+                    addOutline(obj);
+                    selectedObject.selectedGameObject = obj;
+
+
+                    lastSelectedObject = obj;
+                    hitNonInteractableLastTime = false;
+                }
+
+                
 
                 if (!isInteractableObject(obj))
                 {
                     selectedObject.selectedGameObject = null;
-                   
+                    hitNonInteractableLastTime = true;
                     removeOutline(lastSelectedObject);
                 }
 
@@ -48,7 +64,8 @@ public class GazeController : MonoBehaviour
             else
             {
                 removeOutline(lastSelectedObject);
-                lastSelectedObject = null;
+                //lastSelectedObject = null;
+                hitNonInteractableLastTime = true;
                 selectedObject.selectedGameObject = null;
             }
         }
