@@ -98,6 +98,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TMP"",
+                    ""type"": ""Button"",
+                    ""id"": ""4d333a58-ec04-416a-bcbc-619a8e1d8482"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +241,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""PowerStay"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb922a26-ad7f-4430-9ad8-acf859789c6b"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TMP"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +268,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_FreeMoveCamera_PowerPush = m_FreeMoveCamera.FindAction("PowerPush", throwIfNotFound: true);
         m_FreeMoveCamera_PowerPull = m_FreeMoveCamera.FindAction("PowerPull", throwIfNotFound: true);
         m_FreeMoveCamera_PowerStay = m_FreeMoveCamera.FindAction("PowerStay", throwIfNotFound: true);
+        m_FreeMoveCamera_TMP = m_FreeMoveCamera.FindAction("TMP", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +336,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_FreeMoveCamera_PowerPush;
     private readonly InputAction m_FreeMoveCamera_PowerPull;
     private readonly InputAction m_FreeMoveCamera_PowerStay;
+    private readonly InputAction m_FreeMoveCamera_TMP;
     public struct FreeMoveCameraActions
     {
         private @Controls m_Wrapper;
@@ -327,6 +349,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @PowerPush => m_Wrapper.m_FreeMoveCamera_PowerPush;
         public InputAction @PowerPull => m_Wrapper.m_FreeMoveCamera_PowerPull;
         public InputAction @PowerStay => m_Wrapper.m_FreeMoveCamera_PowerStay;
+        public InputAction @TMP => m_Wrapper.m_FreeMoveCamera_TMP;
         public InputActionMap Get() { return m_Wrapper.m_FreeMoveCamera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -360,6 +383,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @PowerStay.started -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnPowerStay;
                 @PowerStay.performed -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnPowerStay;
                 @PowerStay.canceled -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnPowerStay;
+                @TMP.started -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnTMP;
+                @TMP.performed -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnTMP;
+                @TMP.canceled -= m_Wrapper.m_FreeMoveCameraActionsCallbackInterface.OnTMP;
             }
             m_Wrapper.m_FreeMoveCameraActionsCallbackInterface = instance;
             if (instance != null)
@@ -388,6 +414,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @PowerStay.started += instance.OnPowerStay;
                 @PowerStay.performed += instance.OnPowerStay;
                 @PowerStay.canceled += instance.OnPowerStay;
+                @TMP.started += instance.OnTMP;
+                @TMP.performed += instance.OnTMP;
+                @TMP.canceled += instance.OnTMP;
             }
         }
     }
@@ -402,5 +431,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnPowerPush(InputAction.CallbackContext context);
         void OnPowerPull(InputAction.CallbackContext context);
         void OnPowerStay(InputAction.CallbackContext context);
+        void OnTMP(InputAction.CallbackContext context);
     }
 }

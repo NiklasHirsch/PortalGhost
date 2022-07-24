@@ -35,7 +35,7 @@ public class LSLInput : MonoBehaviour
     {
         if (streamInlet == null)
         {
-            Debug.Log("stream not found");
+            //Debug.Log("stream not found");
         }
 
         if (streamInlet != null)
