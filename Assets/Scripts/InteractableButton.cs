@@ -19,7 +19,7 @@ public class InteractableButton : InteractableObject
 
     public override void push() {
         GameObject elevatorObj = GameObject.FindGameObjectWithTag("Elevator");
-
+        startPushAnimation();
         if (elevatorObj != null) {
 
             elevatorObj.GetComponent<setDisplayNumbers>().addNumber(this.gameObject);

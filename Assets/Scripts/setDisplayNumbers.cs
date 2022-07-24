@@ -41,6 +41,7 @@ public class setDisplayNumbers : MonoBehaviour
         else
         {
             displayText.color = new Color(200, 0, 0, 255);
+            GameObject.Find("LampCeilingMain").GetComponent<FlickeringLightController>().StartFlicker();
         }
     }
 

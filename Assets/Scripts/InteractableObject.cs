@@ -50,7 +50,12 @@ public class InteractableObject : MonoBehaviour
     [SerializeField]
     private int standarSpringVal = 4000;
 
+    // [0] = telekinesis; [1] = pull; [2] = push;
+    AudioSource[] audioSources;
+
     public void Start(){
+
+        audioSources = Camera.main.GetComponents<AudioSource>();
         if (floatAtStart){
             floatUp();
         }
@@ -100,6 +105,10 @@ public class InteractableObject : MonoBehaviour
     public virtual void doAfterFloat(){
         Debug.Log("After");
         isActive = true;
+
+        // handle audio
+        muteAudioSources();
+        audioSources[0].mute = false;
 
         springJointSettings();
 
@@ -209,6 +218,8 @@ public class InteractableObject : MonoBehaviour
         Debug.Log("fall down");
         StopAllCoroutines();
 
+        // handle audio
+        muteAudioSources();
         resetSpringJointSettings();
 
         //transform.GetComponent<Rigidbody>().isKinematic = false;
@@ -220,6 +231,10 @@ public class InteractableObject : MonoBehaviour
         Debug.Log("pull");
         if(isActive){
             //distanceToObj = distanceToObj - 0.1f * forceDistance;
+
+            // handle audio
+            muteAudioSources();
+            audioSources[2].mute = false;
 
             velocity = -0.005f * forceDistance;
 
@@ -236,6 +251,10 @@ public class InteractableObject : MonoBehaviour
         if (isActive){
             //distanceToObj = distanceToObj + 0.1f * forceDistance;
 
+            // handle audio
+            muteAudioSources();
+            audioSources[1].mute = false;
+
             velocity = 0.005f * forceDistance;
             //float newDistanceToObj = distanceToObj + 0.1f * forceDistance;
             //StartCoroutine(distanceChange(newDistanceToObj));
@@ -248,11 +267,21 @@ public class InteractableObject : MonoBehaviour
         Debug.Log("null_class");
         if (isActive)
         {
+            // handle audio
+            muteAudioSources();
+            audioSources[0].mute = false;
+
             velocity = 0f;
         }
     }
 
-
+    private void muteAudioSources()
+    {
+        foreach (AudioSource audiSource in audioSources)
+        {
+            audiSource.mute = true;
+        }
+    }
 
     /*
      * Lerp approach

@@ -77,14 +77,22 @@ public class InputController : MonoBehaviour
 
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
-        Vector2 moveInput = context.ReadValue<Vector2>();
-        moveInputEvent.Invoke(moveInput.x, moveInput.y);
+        if (!gameState.menuOpen)
+        {
+            Vector2 moveInput = context.ReadValue<Vector2>();
+            moveInputEvent.Invoke(moveInput.x, moveInput.y);
+        }
+        
     }
 
     private void OnLookPerformed(InputAction.CallbackContext context)
     {
-        Vector2 lookInput = context.ReadValue<Vector2>();
-        lookInputEvent.Invoke(lookInput.x, lookInput.y);
+        if (!gameState.menuOpen)
+        {
+            Vector2 lookInput = context.ReadValue<Vector2>();
+            lookInputEvent.Invoke(lookInput.x, lookInput.y);
+        }
+            
     }
 
     private void OnCreatePortalPerformed(InputAction.CallbackContext context)
