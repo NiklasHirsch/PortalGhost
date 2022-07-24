@@ -103,7 +103,7 @@ public class InputController : MonoBehaviour
             }
             else
             {
-                interactableObj.fallDown();
+                //interactableObj.fallDown();
             }
         }
 
