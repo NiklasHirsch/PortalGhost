@@ -148,7 +148,7 @@ public class GhostController : MonoBehaviour
         if (create_portal_pressed == 1)
         {
             GameObject.FindWithTag("PortalWall").transform.position = transform.position;
-            GameObject.FindWithTag("PortalWall").transform.rotation = transform.rotation * Quaternion.Euler(90, 0, 0);
+            GameObject.FindWithTag("PortalWall").transform.rotation = transform.rotation;// * Quaternion.Euler(90, 0, 0);
 
             portal_wall_base_rotation = transform.rotation;
 

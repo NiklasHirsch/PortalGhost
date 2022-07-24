@@ -88,44 +88,30 @@ public class InputController : MonoBehaviour
 
             if (Physics.Raycast(cameraCenter, ghostCam.transform.forward, out hit, 100))
             {
-                Debug.Log(1);
+ 
                 if (hit.transform.gameObject == inputPortal)
                 {
-                    Debug.Log(2);
+ 
                     Debug.DrawLine(cameraCenter, hit.point, Color.white, 120f);
 
                     Vector3 fromCamToPortal = hit.point - cameraCenter;
 
-                    float help = hit.transform.gameObject.transform.position.x - hit.point.x;
-                    float new_x = hit.transform.gameObject.transform.position.x + help;
 
-                    Vector3 mirrored_x = new Vector3(new_x, hit.point.y, hit.point.z);
-
-                    Vector3 portalCenterPointertoHit = mirrored_x - hit.transform.gameObject.transform.position;
+                    Vector3 portalCenterPointertoHit = hit.point - hit.transform.gameObject.transform.position;
 
                     Quaternion rotation_difference = outputPortal.transform.rotation * Quaternion.Inverse(hit.transform.gameObject.transform.rotation);
 
-                    Vector3 portalCenterPointerToExit = outputPortal.transform.position - (rotation_difference * portalCenterPointertoHit);
+                    Vector3 portalCenterPointerToExit = outputPortal.transform.position + (rotation_difference * portalCenterPointertoHit);
 
 
-                    Debug.DrawLine(outputPortal.transform.position, portalCenterPointerToExit);
-                    Debug.Log(portalCenterPointerToExit);
+                    // (Quaternion.FromToRotation(inputPortal.transform.up, ghostCam.transform.forward)) * outputPortal.transform.up * (-1)
 
 
-
-                    
-
-
-                    //Debug.DrawRay(portalCenterPointerToExit, outputPortal.transform.up);
                     //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     //cube.transform.position = portalCenterPointerToExit;
 
-                    if (Physics.Raycast(portalCenterPointerToExit, (Quaternion.FromToRotation(inputPortal.transform.up, ghostCam.transform.forward)) * outputPortal.transform.up * (-1), out hitOut, 100))
+                    if (Physics.Raycast(portalCenterPointerToExit, outputPortal.transform.rotation * fromCamToPortal, out hitOut, 100))
                     {
-
-                        
-
-                        Debug.Log(3);
                         Debug.DrawLine(portalCenterPointerToExit, hitOut.point, Color.white, 120f);
                     }
                     //Debug.DrawLine(portalCenterPointerToExit, outputPortal.transform.forward, Color.white, 300f);
