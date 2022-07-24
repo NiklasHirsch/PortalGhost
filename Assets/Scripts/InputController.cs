@@ -59,6 +59,15 @@ public class InputController : MonoBehaviour
         controls.FreeMoveCamera.PowerPull.performed += OnPowerPull;
 
         controls.FreeMoveCamera.PowerStay.performed += OnPowerStay;
+
+        controls.FreeMoveCamera.TMP.performed += OnTMP;
+    }
+
+    private void OnTMP(InputAction.CallbackContext context)
+    {
+        //GameObject.Find("LampCeilingMain").GetComponent<FlickeringLightController>().StartFlicker();
+        GameObject.Find("ElevatorButton1").GetComponent<InteractableButton>().startPushAnimation();
+        
     }
 
     private void OnDestroy()
