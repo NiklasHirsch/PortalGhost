@@ -18,8 +18,8 @@ public class LSLInput : MonoBehaviour
     void Start()
     {
         Debug.Log("start");
-        streamInfos = LSL.LSL.resolve_streams(); //"name", StreamType, 1, 5.0
-        //streamInfos = LSL.LSL.resolve_stream("type", StreamType, 1, 0.01);
+        //streamInfos = LSL.LSL.resolve_streams(); //"name", StreamType, 1, 5.0
+        streamInfos = LSL.LSL.resolve_stream("type", StreamType, 1, 0.01);
 
         if (streamInfos.Length > 0)
         {
@@ -35,7 +35,7 @@ public class LSLInput : MonoBehaviour
     {
         if (streamInlet == null)
         {
-            Debug.Log("stream not found");
+            //Debug.Log("stream not found");
         }
 
         if (streamInlet != null)
@@ -45,15 +45,15 @@ public class LSLInput : MonoBehaviour
             //sample = new float[channelCount];
             
 
-            double lastTimeStamp = streamInlet.pull_sample(sample, 0.01f);
-            //Debug.Log(sample[0]);
+            double lastTimeStamp = streamInlet.pull_sample(sample, 0.02f);
+            //Debug.Log("Stamp: " + lastTimeStamp + " sample: " + sample[0]);
 
             if (lastTimeStamp != 0.0)
             {
                 Process(sample, lastTimeStamp);
                 while ((lastTimeStamp = streamInlet.pull_sample(sample, 0.0f)) != 0)
                 {
-                    Debug.Log("sending");
+                    //Debug.Log("sending");
                     Process(sample, lastTimeStamp);
                 }
             }
@@ -64,7 +64,7 @@ public class LSLInput : MonoBehaviour
     void Process(string[] newSample, double timeStamp)
     {
 
-        Debug.Log(newSample[0]);
+        //Debug.Log(newSample[0]);
         if (selectedObject.selectedGameObject != null){
            
             InteractableObject activeObject = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
@@ -73,16 +73,18 @@ public class LSLInput : MonoBehaviour
             if (activeObject.getState()){
                 switch(newSample[0]){
                     case "Push":
-                        Debug.Log("Marker Push");
+                        //Debug.Log("Marker Push");
                         activeObject.push();
                         break;
                     case "Pull":
-                        Debug.Log("Marker Pull");
+                        //Debug.Log("Marker Pull");
                         activeObject.pull();
                         break;
                     case "NULL_CLASS":
+                        //Debug.Log("NULL_CLASS");
+                        activeObject.nullClassCase();
+                        break;
                     default:
-                        Debug.Log("Marker Pull");
                         break;
                 }
             }

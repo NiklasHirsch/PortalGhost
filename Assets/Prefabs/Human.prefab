@@ -167,6 +167,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedObject: {fileID: 11400000, guid: 6b3e3bf37bd51ce4dab2cd6905c77d7f, type: 2}
+  hitLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  radius: 0
 --- !u!1 &9107983894176865890
 GameObject:
   m_ObjectHideFlags: 0

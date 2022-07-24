@@ -19,7 +19,10 @@ TagManager:
   - ElevatorButton8
   - ElevatorButton9
   - ElevatorDeleteButton
-  - PortalCameraView
+  - projectile
+  - FxTemporaire
+  - Elevator
+  - SpringJoint
   layers:
   - Default
   - TransparentFX

@@ -31,6 +31,51 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleMenu",
+                    "type": "Button",
+                    "id": "af5a6850-a217-432b-a5cb-f17d4c08efcd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ActivatePower",
+                    "type": "Button",
+                    "id": "de0cc1d0-ccd0-4d91-98fd-467496f4f086",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PowerPush",
+                    "type": "Button",
+                    "id": "8c4e94b6-6739-425f-97be-aa7a00e361cc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PowerPull",
+                    "type": "Button",
+                    "id": "c79636e6-4036-46c2-8f01-72d9a4f55bf8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PowerStay",
+                    "type": "Button",
+                    "id": "ab6894cc-24e7-49a1-9820-6ac176199e6c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -108,6 +153,61 @@
                     "processors": "",
                     "groups": "",
                     "action": "CreatePortal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27aa2262-ef77-4332-af49-a745bab1740e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15e0b065-bfb5-488e-8454-065a1af0f843",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActivatePower",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "10e95e3c-8094-4140-89ba-fc5a600f7922",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PowerPush",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec88f55a-40b9-477a-a007-998f3d7fe76b",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PowerPull",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3938caf3-91c9-4a1f-9d0b-84a9812cac20",
+                    "path": "<Keyboard>/numpad0",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PowerStay",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
