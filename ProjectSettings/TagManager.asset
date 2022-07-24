@@ -19,6 +19,9 @@ TagManager:
   - ElevatorButton8
   - ElevatorButton9
   - ElevatorDeleteButton
+  - Elevator
+  - Wall
+  - Toilet
   layers:
   - Default
   - TransparentFX

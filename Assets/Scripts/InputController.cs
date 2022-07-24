@@ -111,8 +111,15 @@ public class InputController : MonoBehaviour
             Debug.DrawLine(outputPortal.transform.position, xxx, Color.white, 120f);
 
             var cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
-            if (Physics.Raycast(cameraCenter, Camera.main.transform.forward, out hit, 100))
+            if (Physics.Raycast(cameraCenter, Camera.main.transform.forward, out hit, Mathf.Infinity) && hit.transform.tag == "PortalWall")
             {
+                string ghostTag = "GhostCamera";
+                GameObject ghost = GameObject.FindGameObjectWithTag(ghostTag);
+                if(Physics.Raycast(ghost.transform.position, ghost.transform.forward, out hit, Mathf.Infinity))
+                {
+                    Debug.Log($"HITT!: {hit.transform.tag}");
+                }
+
                 /*
                 if (hit.transform.gameObject.name == inputPortalName)
                 {
