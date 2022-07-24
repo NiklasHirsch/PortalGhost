@@ -19,7 +19,7 @@ public class GhostController : MonoBehaviour
     Vector3 portal_wall_origin = new Vector3(-100, -100, -100);
     Quaternion portal_wall_base_rotation;
     Vector3 human_portal_origin = new Vector3(-100, -100, -100);
-    Vector3 human_portal_pos = new Vector3(-0.4287394f, 1.723f, 3.069f);
+    Vector3 human_portal_pos = new Vector3(-0.4287394f, 1.723f, 2.978f);
     //Quaternion human_portal_base_rotation;
     //Vector3 human_portal_pos = new Vector3(-0.951f, 1.8096f, -2.947f); // (1)
 
