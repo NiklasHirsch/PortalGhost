@@ -24,9 +24,9 @@ public class VivePosTracker : MonoBehaviour
         //Debug.Log("startYPos: " + startYPos);
         //Debug.Log("Vive Tracker Pos: " + transform.position.y);
 
-        CheckActivate();
+        //CheckActivate();
 
-        CheckDeactivate();
+        //CheckDeactivate();
     }
 
     void CheckDeactivate() {
