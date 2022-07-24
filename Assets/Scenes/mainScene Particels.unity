@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2199,7 +2199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10800000, guid: a4af0d82b00381c48bc30b65c57ba3f8, type: 3}
       propertyPath: m_Intensity
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10800000, guid: a4af0d82b00381c48bc30b65c57ba3f8, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -2219,11 +2219,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: a4af0d82b00381c48bc30b65c57ba3f8, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.125
+      value: 0.0125
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: a4af0d82b00381c48bc30b65c57ba3f8, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: a4af0d82b00381c48bc30b65c57ba3f8, type: 3}
       propertyPath: playOnAwake
@@ -2231,7 +2231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800004, guid: a4af0d82b00381c48bc30b65c57ba3f8, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 19900000, guid: a4af0d82b00381c48bc30b65c57ba3f8, type: 3}
       propertyPath: m_Materials.Array.size
@@ -2739,6 +2739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af56af378613ae448443736e5c01ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: {fileID: 0}
   displayText: {fileID: 1862161183}
   finishText: {fileID: 1955656698}
   button1: {fileID: 1862161195}

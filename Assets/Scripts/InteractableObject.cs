@@ -110,10 +110,11 @@ public class InteractableObject : MonoBehaviour
         if (particleIsActive) 
         {
             //ParticleSystem part = GetComponent<ParticleSystem>();
-            ParticleSystem smoke = transform.Find("Smoke").GetComponent<ParticleSystem>();
-            ParticleSystem spark1 = transform.Find("Spark1").GetComponent<ParticleSystem>();
-            ParticleSystem spark2 = transform.Find("Spark2").GetComponent<ParticleSystem>();
+            ParticleSystem smoke = GameObject.Find("Smoke").GetComponent<ParticleSystem>();
+            ParticleSystem spark1 = GameObject.Find("Spark1").GetComponent<ParticleSystem>();
+            ParticleSystem spark2 = GameObject.Find("Spark2").GetComponent<ParticleSystem>();
             smoke.Play();
+            Debug.Log("PARTICLE");
             spark1.Play();
             spark2.Play();
         }
