@@ -171,7 +171,7 @@ public class GhostController : MonoBehaviour
             // dont return human portal for debuging
             //GameObject.FindWithTag("HumanPortal").transform.position = human_portal_origin;
 
-            portal_spawned = false;
+            //portal_spawned = false;
         }
     }
 
