@@ -55,7 +55,7 @@ public class GhostController : MonoBehaviour
 
 			//}
 
-			// Debug: ghost can moce freely. Comment following lines for real play
+			// Debug: ghost can moce freely
 			float RotationX = horizontalCameraSensitivity * mouseX * Time.deltaTime;
 			float RotationY = verticalCameraSensitivity * mouseY * Time.deltaTime;
 			Vector3 CameraRotation = transform.rotation.eulerAngles;

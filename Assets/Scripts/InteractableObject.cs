@@ -94,7 +94,7 @@ public class InteractableObject : MonoBehaviour
     }
 
     public virtual void floatUp() {
-        Debug.Log("float up");
+        //Debug.Log("float up");
         isInfloatingStart = true;
 
         if (!isActive) {
@@ -104,14 +104,14 @@ public class InteractableObject : MonoBehaviour
     }
 
     public virtual void doAfterFloat(){
-        Debug.Log("After");
+        //Debug.Log("After");
         isActive = true;
         if (isSelectedThroughPortal)
         {
             string inputPortalName = "HumanPortal";
 
             GameObject inputPortal = GameObject.Find(inputPortalName);
-            gameObject.transform.position = inputPortal.transform.position + inputPortal.transform.forward * (-1);
+            gameObject.transform.position = inputPortal.transform.position + inputPortal.transform.forward * (-1.5f);
         }
 
         // handle audio
@@ -183,7 +183,7 @@ public class InteractableObject : MonoBehaviour
         {
             return;
         }
-        Debug.Log("addSpringJoint");
+        //Debug.Log("addSpringJoint");
         springJointObj.AddComponent<SpringJoint>();
 
         springJoint = springJointObj.GetComponent<SpringJoint>();
@@ -223,7 +223,7 @@ public class InteractableObject : MonoBehaviour
     }
 
     public virtual void fallDown() {
-        Debug.Log("fall down");
+        //Debug.Log("fall down");
         StopAllCoroutines();
 
         // handle audio

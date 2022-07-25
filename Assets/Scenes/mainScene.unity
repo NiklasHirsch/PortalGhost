@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &62647894
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1387054557997783653, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 46723ec472827e74289d467d6e90b3ee, type: 2}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589341, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_Name
+      value: GhostPortal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
 --- !u!1 &121238656 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8209890818624747624, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
@@ -142,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -312,7 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -354,7 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -382,7 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -462,7 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -537,7 +598,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 110871665734358219, guid: 6a43aded7db6166499cd80a032832b51, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 110871665734358219, guid: 6a43aded7db6166499cd80a032832b51, type: 3}
       propertyPath: m_LocalPosition.x
@@ -604,7 +665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -791,7 +852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -912,7 +973,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466438579 stripped
 GameObject:
@@ -933,7 +994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1075,7 +1136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1250,63 +1311,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c4f88f230a1c8c4bb24d6fc932f2e19, type: 3}
---- !u!1001 &819510470
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165286999489553312, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_Name
-      value: PortalWall
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
 --- !u!1001 &827005243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1383,7 +1387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1406,7 +1410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1497,7 +1501,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -1.835, y: 0, z: 0}
 --- !u!1 &874167208
 GameObject:
@@ -1544,7 +1548,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &911558903 stripped
 Transform:
@@ -1570,7 +1574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1627,7 +1631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1712,7 +1716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1746,7 +1750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1755,6 +1759,63 @@ MonoBehaviour:
   forceDistance: 2
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
+--- !u!1001 &1002876334
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657770046891414459, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
+      propertyPath: m_Name
+      value: HumanPortal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
 --- !u!114 &1012554795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1769,7 +1830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2138,7 +2199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2244,7 +2305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2352,7 +2413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2321190375817145602, guid: 1a05a65c32a9a4d6c9ddfe0a5427c624, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2321190375817145602, guid: 1a05a65c32a9a4d6c9ddfe0a5427c624, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2476,7 +2537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2529,7 +2590,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1208618868
 PrefabInstance:
@@ -2828,65 +2889,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1334840234
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1540904583539398694, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_Name
-      value: HumanPortal
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692291926648695938, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692291926648695938, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692291926648695938, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692291926648695938, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692291926648695938, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7072302
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692291926648695938, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7069834
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692291926648695938, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692291926648695938, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692291926648695938, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -89.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692291926648695938, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692291926648695938, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 057c4c485e4210244a05a92a79edcc83, type: 3}
 --- !u!1001 &1335027901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3033,7 +3037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -3056,7 +3060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -3079,7 +3083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -3107,7 +3111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -3395,7 +3399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8209890818356001018, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8209890818429676497, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_Mass
@@ -3559,7 +3563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8209890819868750788, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8209890819928795084, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_TagString
@@ -3748,7 +3752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -3771,7 +3775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -3794,7 +3798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -3958,7 +3962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37c2cf88f7c59f4c8cf5d3812568143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
+  index: 4
   origin: {fileID: 0}
 --- !u!65 &1868708895
 BoxCollider:
@@ -4042,7 +4046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -4070,7 +4074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -4322,7 +4326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -4344,7 +4348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5261883793159368203, guid: 478cd66149a915147929cd119884e104, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5261883793159368203, guid: 478cd66149a915147929cd119884e104, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4407,7 +4411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isInfloatingStart: 1
-  particleIsActive: 1
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -4435,7 +4439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
-  particleIsActive: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
