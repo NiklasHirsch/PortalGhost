@@ -9,7 +9,9 @@ public class InteractableObject : MonoBehaviour
     //basic obj variables
     public bool isActive = false;
     public bool isInfloatingStart = false;
- 
+
+    public bool particleIsActive = false;
+
     [Header("Shake Settings")]
     public float minimalYitter = -0.01f;
     public float maximalYitter = 0.01f;
@@ -99,7 +101,24 @@ public class InteractableObject : MonoBehaviour
         if (!isActive) {
             //transform.GetComponent<Rigidbody>().isKinematic = true;
             StartCoroutine(MoveOverSeconds(gameObject, new Vector3(transform.position.x, (transform.position.y + hoverLevel), transform.position.z), secondTillStabilized, doAfterFloat));
+            particleEffects();
         }
+    }
+
+    public virtual void particleEffects()
+    {
+        if (particleIsActive) 
+        {
+            //ParticleSystem part = GetComponent<ParticleSystem>();
+            ParticleSystem smoke = GameObject.Find("Smoke").GetComponent<ParticleSystem>();
+            ParticleSystem spark1 = GameObject.Find("Spark1").GetComponent<ParticleSystem>();
+            ParticleSystem spark2 = GameObject.Find("Spark2").GetComponent<ParticleSystem>();
+            smoke.Play();
+            Debug.Log("PARTICLE");
+            spark1.Play();
+            spark2.Play();
+        }
+ 
     }
 
     public virtual void doAfterFloat(){
