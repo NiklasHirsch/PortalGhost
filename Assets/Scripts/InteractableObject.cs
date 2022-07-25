@@ -9,6 +9,7 @@ public class InteractableObject : MonoBehaviour
     //basic obj variables
     public bool isActive = false;
     public bool isInfloatingStart = false;
+    public bool isSelectedThroughPortal = false;
  
     [Header("Shake Settings")]
     public float minimalYitter = -0.01f;
@@ -105,6 +106,13 @@ public class InteractableObject : MonoBehaviour
     public virtual void doAfterFloat(){
         Debug.Log("After");
         isActive = true;
+        if (isSelectedThroughPortal)
+        {
+            string inputPortalName = "HumanPortal";
+
+            GameObject inputPortal = GameObject.Find(inputPortalName);
+            gameObject.transform.position = inputPortal.transform.position + inputPortal.transform.forward * (-1);
+        }
 
         // handle audio
         muteAudioSources();

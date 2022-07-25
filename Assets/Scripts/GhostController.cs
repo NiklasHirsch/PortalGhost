@@ -37,37 +37,37 @@ public class GhostController : MonoBehaviour
     {
         if (portal_spawned)
         {
-            // Debug: portal collision
-            //if (human_portal_entered && timer == 0)
-            //{
-            //    transform.position = GameObject.FindWithTag("PortalWall").transform.position;
-            //    transform.rotation = portal_wall_base_rotation;
-            //    human_portal_entered = false;
-            //    timer = 300;
+			// Debug: portal collision
+			//if (human_portal_entered && timer == 0)
+			//{
+			//    transform.position = GameObject.FindWithTag("PortalWall").transform.position;
+			//    transform.rotation = portal_wall_base_rotation;
+			//    human_portal_entered = false;
+			//    timer = 300;
 
-            //}
-            //if (portal_wall_entered && timer == 0)
-            //{
-            //    transform.position = GameObject.FindWithTag("HumanPortal").transform.position;
-            //    transform.eulerAngles = new Vector3(0, 180, 0);
-            //    portal_wall_entered = false;
-            //    timer = 300;
+			//}
+			//if (portal_wall_entered && timer == 0)
+			//{
+			//    transform.position = GameObject.FindWithTag("HumanPortal").transform.position;
+			//    transform.eulerAngles = new Vector3(0, 180, 0);
+			//    portal_wall_entered = false;
+			//    timer = 300;
 
-            //}
+			//}
 
-            // Debug: ghost can moce freely. Comment following lines for real play
-            //float RotationX = horizontalCameraSensitivity * mouseX * Time.deltaTime;
-            //float RotationY = verticalCameraSensitivity * mouseY * Time.deltaTime;
-            //Vector3 CameraRotation = transform.rotation.eulerAngles;
-            //CameraRotation.x -= RotationY;
-            //CameraRotation.y += RotationX;
-            //transform.rotation = Quaternion.Euler(CameraRotation);
-            //Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
-            //transform.position += moveDirection * moveSpeed * Time.deltaTime;
+			// Debug: ghost can moce freely. Comment following lines for real play
+			float RotationX = horizontalCameraSensitivity * mouseX * Time.deltaTime;
+			float RotationY = verticalCameraSensitivity * mouseY * Time.deltaTime;
+			Vector3 CameraRotation = transform.rotation.eulerAngles;
+			CameraRotation.x -= RotationY;
+			CameraRotation.y += RotationX;
+			transform.rotation = Quaternion.Euler(CameraRotation);
+			Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
+			transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
-            // Portal visuals:
-            // Get directional vectors from the human to the HumanPortal
-            Vector3 dir = (GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position).normalized;
+			// Portal visuals:
+			// Get directional vectors from the human to the HumanPortal
+			Vector3 dir = (GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position).normalized;
             Vector3 distance = GameObject.FindWithTag("HumanPortal").transform.position - Camera.main.transform.position;
 
             // get base rotation of the camera (workaround to counteract VR-Tracking)

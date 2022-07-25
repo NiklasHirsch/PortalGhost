@@ -113,20 +113,31 @@ public class InputController : MonoBehaviour
 
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
-        Vector2 moveInput = context.ReadValue<Vector2>();
-        moveInputEvent.Invoke(moveInput.x, moveInput.y);
+        if (!gameState.menuOpen)
+        {
+            Vector2 moveInput = context.ReadValue<Vector2>();
+            moveInputEvent.Invoke(moveInput.x, moveInput.y);
+        }
     }
 
     private void OnLookPerformed(InputAction.CallbackContext context)
     {
-        Vector2 lookInput = context.ReadValue<Vector2>();
-        lookInputEvent.Invoke(lookInput.x, lookInput.y);
+        if (!gameState.menuOpen)
+        {
+            Vector2 lookInput = context.ReadValue<Vector2>();
+            lookInputEvent.Invoke(lookInput.x, lookInput.y);
+        }
     }
 
     private void OnCreatePortalPerformed(InputAction.CallbackContext context)
     {
-        var createPortalInput = context.ReadValue<float>();
-        createPortalInputEvent.Invoke(createPortalInput);
+        Debug.Log("adasdf");
+        if (!gameState.menuOpen)
+        {
+            Debug.Log("adasdfasdfsd");
+            var createPortalInput = context.ReadValue<float>();
+            createPortalInputEvent.Invoke(createPortalInput);
+        }
     }
 
     private void OnToggleMenuPerformed(InputAction.CallbackContext context)
@@ -139,7 +150,7 @@ public class InputController : MonoBehaviour
 
     private void OnActivatePower(InputAction.CallbackContext context)
     {
-        if (selectedObject != null)
+        if (!gameState.menuOpen && selectedObject != null)
         {
             InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
             if (!interactableObj.isActive)
@@ -157,7 +168,7 @@ public class InputController : MonoBehaviour
     private void OnPowerPush(InputAction.CallbackContext context)
     {
         
-        if (selectedObject != null)
+        if (!gameState.menuOpen && selectedObject != null)
         {
             InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
             if (interactableObj.isActive)
@@ -170,7 +181,7 @@ public class InputController : MonoBehaviour
 
     private void OnPowerPull(InputAction.CallbackContext context)
     {
-        if (selectedObject != null)
+        if (!gameState.menuOpen && selectedObject != null)
         {
             InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
             if (interactableObj.isActive)
@@ -182,7 +193,7 @@ public class InputController : MonoBehaviour
 
     private void OnPowerStay(InputAction.CallbackContext context)
     {
-        if (selectedObject != null)
+        if (!gameState.menuOpen && selectedObject != null)
         {
             InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
             if (interactableObj.isActive)

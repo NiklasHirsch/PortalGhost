@@ -31,38 +31,43 @@ public class GazeController : MonoBehaviour
 
                 GameObject inputPortal = GameObject.Find(inputPortalName);
                 GameObject outputPortal = GameObject.Find(outputPortalName);
-
+                //Debug.Log("Obj" + hit.transform.gameObject);
                 if (hit.transform.gameObject == inputPortal)
                 {
-
                     RaycastHit hit2, hitOut;
 
-                    GameObject ghostObj = GameObject.Find("GhostCamera");
-                    Camera camToTrack = ghostObj.GetComponent<Camera>();
+                    //GameObject ghostObj = GameObject.Find("GhostCamera");
+                    Camera camToTrack = Camera.main;
 
                     var cameraCenter = camToTrack.transform.position;
 
                     if (Physics.Raycast(cameraCenter, camToTrack.transform.forward, out hit2, 200))
                     {
-
+                       
                         if (hit2.transform.gameObject == inputPortal)
                         {
-
                             Debug.DrawLine(cameraCenter, hit2.point, Color.white, 120f);
 
                             Vector3 fromCamToPortal = hit2.point - cameraCenter;
+                            //Vector3 fromCamToPortal = cameraCenter - hit2.point;
+
 
                             Vector3 portalCenterPointertoHit = hit2.point - hit2.transform.gameObject.transform.position;
 
-                            Quaternion rotation_difference = outputPortal.transform.rotation * Quaternion.Inverse(hit2.transform.gameObject.transform.rotation);
+                            Quaternion rotation_difference = outputPortal.transform.rotation * Quaternion.Inverse(inputPortal.transform.rotation);
 
                             Vector3 portalCenterPointerToExit = outputPortal.transform.position + (rotation_difference * portalCenterPointertoHit);
 
-                            if (Physics.Raycast(portalCenterPointerToExit, outputPortal.transform.rotation * fromCamToPortal, out hitOut, 200))
+                            Vector3 bla = portalCenterPointerToExit + (outputPortal.transform.rotation * fromCamToPortal).normalized * 0.3f;
+
+                            //if (Physics.Raycast(portalCenterPointerToExit, (outputPortal.transform.rotation * fromCamToPortal).normalized, out hitOut, 100))
+                            if(Physics.SphereCast(portalCenterPointerToExit, radius, outputPortal.transform.rotation * fromCamToPortal, out hitOut, 200, hitLayerMask, QueryTriggerInteraction.UseGlobal))
                             {
                                 Debug.DrawLine(portalCenterPointerToExit, hitOut.point, Color.white, 120f);
-
                                 GameObject obj = hitOut.transform.gameObject;
+                                Debug.Log("Raycast: " + obj);
+
+                                obj.GetComponent<InteractableObject>().isSelectedThroughPortal = true;
                                 hitObjResolve(obj);
 
                             }
@@ -74,7 +79,7 @@ public class GazeController : MonoBehaviour
                 else
                 {
                     GameObject obj = hit.transform.gameObject;
-
+                    obj.GetComponent<InteractableObject>().isSelectedThroughPortal = false;
                     hitObjResolve(obj);
                 }
 

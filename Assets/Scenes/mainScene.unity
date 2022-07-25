@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -159,7 +160,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3657770046891414448, guid: 535211a04f6d7ec46b3d84010471122c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -263,6 +264,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 74115883887599661, guid: 09cca2077fc62d5478059aa51951efa7, type: 3}
+      propertyPath: gui
+      value: 
+      objectReference: {fileID: 1647358752}
+    - target: {fileID: 74115883887599661, guid: 09cca2077fc62d5478059aa51951efa7, type: 3}
       propertyPath: selectedObject
       value: 
       objectReference: {fileID: 11400000, guid: 6b3e3bf37bd51ce4dab2cd6905c77d7f, type: 2}
@@ -292,63 +297,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09cca2077fc62d5478059aa51951efa7, type: 3}
---- !u!1001 &181954019
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6502126750414589341, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
-      propertyPath: m_Name
-      value: GhostPortal
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
 --- !u!1 &210213302 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8208114803765131973, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
@@ -368,6 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -409,6 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -436,6 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -458,6 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -542,6 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -671,6 +624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -791,7 +745,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466438579 stripped
 GameObject:
@@ -812,6 +766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -839,6 +794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -861,63 +817,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redPressurePlateActive: {fileID: 1862161180}
   greenPressurePlateActive: {fileID: 1862161178}
---- !u!1001 &819510470
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916698592728806422, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165286999489553312, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
-      propertyPath: m_Name
-      value: PortalWall
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fa98fc0533d979d4dbd6856dc73371f4, type: 3}
 --- !u!1 &842859773 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8208812640945235386, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
@@ -937,6 +836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -959,6 +859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1049,7 +950,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -1.835, y: 0, z: 0}
 --- !u!1 &874167208
 GameObject:
@@ -1096,7 +997,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &911558903 stripped
 Transform:
@@ -1122,6 +1023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1178,6 +1080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1205,6 +1108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1238,6 +1142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1260,6 +1165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1628,6 +1534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1676,6 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1726,7 +1634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2321190375817145602, guid: 1a05a65c32a9a4d6c9ddfe0a5427c624, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2321190375817145602, guid: 1a05a65c32a9a4d6c9ddfe0a5427c624, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1793,6 +1701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -1845,7 +1754,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1269920339
 GameObject:
@@ -1973,8 +1882,69 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1329759646
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1387054557997783653, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 46723ec472827e74289d467d6e90b3ee, type: 2}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.7138
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.014
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589336, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502126750414589341, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
+      propertyPath: m_Name
+      value: GhostPortal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c27e934d7415fbc468acdf2eda96da9a, type: 3}
 --- !u!1001 &1386853408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2064,6 +2034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2086,6 +2057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2108,6 +2080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2135,6 +2108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2143,6 +2117,11 @@ MonoBehaviour:
   forceDistance: 1
   _durationPerUnitMoved: 0.1
   standarSpringVal: 4000
+--- !u!1 &1647358752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2321190375817145600, guid: 1a05a65c32a9a4d6c9ddfe0a5427c624, type: 3}
+  m_PrefabInstance: {fileID: 1131695873}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1862161177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2296,7 +2275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8209890818356001018, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8209890818429676497, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_Mass
@@ -2460,7 +2439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8209890819868750788, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8209890819928795084, guid: 0dd8e4b73af029949bf57ae25c6d2fda, type: 3}
       propertyPath: m_TagString
@@ -2649,6 +2628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2671,6 +2651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2693,6 +2674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2856,7 +2838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37c2cf88f7c59f4c8cf5d3812568143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
+  index: 4
   origin: {fileID: 0}
 --- !u!65 &1868708895
 BoxCollider:
@@ -2940,6 +2922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -2967,6 +2950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -3161,6 +3145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -3245,6 +3230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
@@ -3272,6 +3258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0
