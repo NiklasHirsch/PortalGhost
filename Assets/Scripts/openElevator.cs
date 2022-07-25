@@ -18,6 +18,7 @@ public class openElevator : MonoBehaviour
         if(redPressurePlateActive.isActivated && greenPressurePlateActive.isActivated) {
             Destroy(gameObject);
             Destroy(this);
+            GameObject.Find("LampCeilingMain").GetComponent<FlickeringLightController>().StartFlicker();
         }
     }
 }

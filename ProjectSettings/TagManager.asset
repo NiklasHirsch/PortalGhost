@@ -23,6 +23,7 @@ TagManager:
   - FxTemporaire
   - Elevator
   - SpringJoint
+  - PortalCameraView
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - UI
   - Ghost
   - OuterWalls
-  - 
+  - Human
   - 
   - 
   - 

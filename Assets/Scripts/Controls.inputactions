@@ -80,7 +80,7 @@
                 {
                     "name": "TMP",
                     "type": "Button",
-                    "id": "d83bf6d5-9c1f-4405-8d1b-fd82cf08c7be",
+                    "id": "4d333a58-ec04-416a-bcbc-619a8e1d8482",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -222,7 +222,7 @@
                 },
                 {
                     "name": "",
-                    "id": "5cdc2220-bb84-4884-b460-ca5b8f1b5e84",
+                    "id": "fb922a26-ad7f-4430-9ad8-acf859789c6b",
                     "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",

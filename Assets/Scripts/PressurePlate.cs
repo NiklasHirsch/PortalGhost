@@ -27,7 +27,7 @@ public class PressurePlate : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, other.transform.position);
 
-            if (distance < 0.5f)
+            if (distance < 0.7f)
             {
                 Rigidbody box = other.GetComponent<Rigidbody>();
                 
