@@ -61,7 +61,12 @@ public class InputController : MonoBehaviour
 
         controls.FreeMoveCamera.PowerStay.performed += OnPowerStay;
 
-        controls.FreeMoveCamera.TMP.performed += OnTMP;
+        controls.FreeMoveCamera.TMP.performed += onMyTMP;
+    }
+
+    private void onMyTMP(InputAction.CallbackContext context)
+    {
+        //GameObject.Find("ElevatorObject").GetComponent<setDisplayNumbers>().win();
     }
 
     private void OnTMP(InputAction.CallbackContext context)

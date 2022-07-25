@@ -79,9 +79,11 @@ public class GazeController : MonoBehaviour
                 else
                 {
                     GameObject obj = hit.transform.gameObject;
-
-                    obj.GetComponent<InteractableObject>().isSelectedThroughPortal = false;
-                    hitObjResolve(obj);
+                    if (obj != null && obj.GetComponent<InteractableObject>() != null)
+                    {
+                        obj.GetComponent<InteractableObject>().isSelectedThroughPortal = false;
+                        hitObjResolve(obj);
+                    }
                 }
 
             }
@@ -93,9 +95,6 @@ public class GazeController : MonoBehaviour
                 selectedObject.selectedGameObject = null;
             }
         }
-        /*else {
-            addOutline(selectedObject.selectedGameObject);
-        }*/
     }
 
     private void hitObjResolve(GameObject obj)

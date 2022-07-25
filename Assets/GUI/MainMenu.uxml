@@ -17,13 +17,13 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="victory" style="width: 100%; height: 100%; display: none;">
+    <ui:VisualElement name="victory" style="width: 100%; height: 100%; display: none; background-color: rgb(56, 56, 56);">
         <ui:VisualElement name="VictoryText" style="flex-grow: 1; justify-content: center; align-items: center;">
             <ui:Label text="Congratulations,&#10;you managed to escape!&#10;" display-tooltip-when-elided="true" style="font-size: 40px; color: rgb(255, 255, 255); -unity-text-align: upper-center;" />
             <ui:Label text="With helping you break free,&#10; the trapped soul finally was able to move on and find peace." display-tooltip-when-elided="true" style="color: rgb(255, 255, 255); font-size: 25px; justify-content: flex-start; align-items: center; -unity-text-align: upper-center;" />
-            <ui:Label text="Thank you for playing our game!" display-tooltip-when-elided="true" style="font-size: 18px; margin-top: 50px;" />
+            <ui:Label text="Thank you for playing our game!" display-tooltip-when-elided="true" style="font-size: 18px; margin-top: 50px; color: rgba(255, 255, 255, 255);" />
         </ui:VisualElement>
-        <ui:VisualElement name="VictoryButtons" style="align-items: center; justify-content: center; display: flex; flex-grow: 1; background-color: rgb(56, 56, 56);">
+        <ui:VisualElement name="VictoryButtons" style="align-items: center; justify-content: center; display: flex; flex-grow: 1;">
             <ui:Button text="New Game" display-tooltip-when-elided="true" name="ButtonVictoryNewGame" />
             <ui:Button text="Quit" display-tooltip-when-elided="true" name="ButtonVictoryQuit" />
         </ui:VisualElement>

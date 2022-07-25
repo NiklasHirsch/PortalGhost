@@ -647,7 +647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8209890818278761516}
   m_Layer: 0
-  m_Name: Elevator
+  m_Name: ElevatorObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1859,6 +1859,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElevatorButton1
       objectReference: {fileID: 0}
+    - target: {fileID: 3077672441431205711, guid: 0080f02bc7f714844888f5355df78c38, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085571870452624319, guid: 0080f02bc7f714844888f5355df78c38, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0080f02bc7f714844888f5355df78c38, type: 3}
 --- !u!1 &8209890818801145916 stripped
@@ -1880,6 +1888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isInfloatingStart: 0
+  isSelectedThroughPortal: 0
   minimalYitter: -0.01
   maximalYitter: 0.01
   floatAtStart: 0

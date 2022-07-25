@@ -35,6 +35,17 @@ public class setDisplayNumbers : MonoBehaviour
         displayText.text = numbers;
     }
 
+    public void win()
+    {
+        numbers = "327614";
+        displayText.color = new Color(0, 200, 0, 255);
+        finishText.text = "You did it!";
+
+        GameObject gui = GameObject.Find("GameManager").GetComponent<InputController>().gui;
+        gameState.ToggleMenu(gui);
+        gui.GetComponent<GUIController>().victory();
+    }
+
     private void checkCode()
     {
         if(numbers == "327614")//327614
