@@ -68,7 +68,6 @@ public class InputController : MonoBehaviour
     {
         if (true)
         {
-
             RaycastHit hit, hitOut;
 
             string inputPortalName = "HumanPortal";
@@ -78,15 +77,11 @@ public class InputController : MonoBehaviour
             GameObject outputPortal = GameObject.Find(outputPortalName);
 
             GameObject ghostObj = GameObject.Find("GhostCamera");
-            Camera ghostCam = ghostObj.GetComponent<Camera>();
-            //Camera ghostCam = Camera.main;
+            Camera camToTrack = ghostObj.GetComponent<Camera>();
 
-            //Debug.DrawLine(outputPortal.transform.position, xxx, Color.white, 120f);
+            var cameraCenter = camToTrack.transform.position;
 
-            //var cameraCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2f, Screen.height / 2f, Camera.main.nearClipPlane));
-            var cameraCenter = ghostCam.transform.position;
-
-            if (Physics.Raycast(cameraCenter, ghostCam.transform.forward, out hit, 100))
+            if (Physics.Raycast(cameraCenter, camToTrack.transform.forward, out hit, 100))
             {
  
                 if (hit.transform.gameObject == inputPortal)
@@ -96,33 +91,21 @@ public class InputController : MonoBehaviour
 
                     Vector3 fromCamToPortal = hit.point - cameraCenter;
 
-
                     Vector3 portalCenterPointertoHit = hit.point - hit.transform.gameObject.transform.position;
 
                     Quaternion rotation_difference = outputPortal.transform.rotation * Quaternion.Inverse(hit.transform.gameObject.transform.rotation);
 
                     Vector3 portalCenterPointerToExit = outputPortal.transform.position + (rotation_difference * portalCenterPointertoHit);
 
-
-                    // (Quaternion.FromToRotation(inputPortal.transform.up, ghostCam.transform.forward)) * outputPortal.transform.up * (-1)
-
-
-                    //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                    //cube.transform.position = portalCenterPointerToExit;
-
                     if (Physics.Raycast(portalCenterPointerToExit, outputPortal.transform.rotation * fromCamToPortal, out hitOut, 100))
                     {
                         Debug.DrawLine(portalCenterPointerToExit, hitOut.point, Color.white, 120f);
                     }
-                    //Debug.DrawLine(portalCenterPointerToExit, outputPortal.transform.forward, Color.white, 300f);
-                }
-                
+                }          
             }
-
-
         }
-
     }
+
     private void OnDestroy()
     {
         controls.FreeMoveCamera.ToggleMenu.performed -= OnToggleMenuPerformed;
