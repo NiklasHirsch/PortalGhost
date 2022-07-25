@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -65,9 +66,44 @@ public class InputController : MonoBehaviour
 
     private void OnTMP(InputAction.CallbackContext context)
     {
-        //GameObject.Find("LampCeilingMain").GetComponent<FlickeringLightController>().StartFlicker();
-        GameObject.Find("ElevatorButton1").GetComponent<InteractableButton>().startPushAnimation();
-        
+        if (true)
+        {
+            RaycastHit hit2, hitOut;
+
+            string inputPortalName = "HumanPortal";
+            string outputPortalName = "GhostPortal";
+
+            GameObject inputPortal = GameObject.Find(inputPortalName);
+            GameObject outputPortal = GameObject.Find(outputPortalName);
+
+            GameObject ghostObj = GameObject.Find("GhostCamera");
+            Camera camToTrack = ghostObj.GetComponent<Camera>();
+
+            var cameraCenter = camToTrack.transform.position;
+
+            if (Physics.Raycast(cameraCenter, camToTrack.transform.forward, out hit2, 100))
+            {
+ 
+                if (hit2.transform.gameObject == inputPortal)
+                {
+ 
+                    Debug.DrawLine(cameraCenter, hit2.point, Color.white, 120f);
+
+                    Vector3 fromCamToPortal = hit2.point - cameraCenter;
+
+                    Vector3 portalCenterPointertoHit = hit2.point - hit2.transform.gameObject.transform.position;
+
+                    Quaternion rotation_difference = outputPortal.transform.rotation * Quaternion.Inverse(hit2.transform.gameObject.transform.rotation);
+
+                    Vector3 portalCenterPointerToExit = outputPortal.transform.position + (rotation_difference * portalCenterPointertoHit);
+
+                    if (Physics.Raycast(portalCenterPointerToExit, outputPortal.transform.rotation * fromCamToPortal, out hitOut, 100))
+                    {
+                        Debug.DrawLine(portalCenterPointerToExit, hitOut.point, Color.white, 120f);
+                    }
+                }          
+            }
+        }
     }
 
     private void OnDestroy()
@@ -82,7 +118,6 @@ public class InputController : MonoBehaviour
             Vector2 moveInput = context.ReadValue<Vector2>();
             moveInputEvent.Invoke(moveInput.x, moveInput.y);
         }
-        
     }
 
     private void OnLookPerformed(InputAction.CallbackContext context)
@@ -92,13 +127,17 @@ public class InputController : MonoBehaviour
             Vector2 lookInput = context.ReadValue<Vector2>();
             lookInputEvent.Invoke(lookInput.x, lookInput.y);
         }
-            
     }
 
     private void OnCreatePortalPerformed(InputAction.CallbackContext context)
     {
-        var createPortalInput = context.ReadValue<float>();
-        createPortalInputEvent.Invoke(createPortalInput);
+        Debug.Log("adasdf");
+        if (!gameState.menuOpen)
+        {
+            Debug.Log("adasdfasdfsd");
+            var createPortalInput = context.ReadValue<float>();
+            createPortalInputEvent.Invoke(createPortalInput);
+        }
     }
 
     private void OnToggleMenuPerformed(InputAction.CallbackContext context)
@@ -111,7 +150,7 @@ public class InputController : MonoBehaviour
 
     private void OnActivatePower(InputAction.CallbackContext context)
     {
-        if (selectedObject != null)
+        if (!gameState.menuOpen && selectedObject != null)
         {
             InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
             if (!interactableObj.isActive)
@@ -129,7 +168,7 @@ public class InputController : MonoBehaviour
     private void OnPowerPush(InputAction.CallbackContext context)
     {
         
-        if (selectedObject != null)
+        if (!gameState.menuOpen && selectedObject != null)
         {
             InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
             if (interactableObj.isActive)
@@ -142,7 +181,7 @@ public class InputController : MonoBehaviour
 
     private void OnPowerPull(InputAction.CallbackContext context)
     {
-        if (selectedObject != null)
+        if (!gameState.menuOpen && selectedObject != null)
         {
             InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
             if (interactableObj.isActive)
@@ -154,7 +193,7 @@ public class InputController : MonoBehaviour
 
     private void OnPowerStay(InputAction.CallbackContext context)
     {
-        if (selectedObject != null)
+        if (!gameState.menuOpen && selectedObject != null)
         {
             InteractableObject interactableObj = selectedObject.selectedGameObject.GetComponent<InteractableObject>();
             if (interactableObj.isActive)
