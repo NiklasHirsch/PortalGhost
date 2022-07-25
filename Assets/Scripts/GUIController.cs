@@ -139,6 +139,8 @@ public class GUIController : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
-        MasterMixer.SetFloat("master", volume);
+        Debug.Log(volume);
+        Debug.Log(Mathf.Log10(volume) * 20);
+        MasterMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
     }
 }
