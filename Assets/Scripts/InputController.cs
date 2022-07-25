@@ -68,7 +68,7 @@ public class InputController : MonoBehaviour
     {
         if (true)
         {
-            RaycastHit hit, hitOut;
+            RaycastHit hit2, hitOut;
 
             string inputPortalName = "HumanPortal";
             string outputPortalName = "GhostPortal";
@@ -81,19 +81,19 @@ public class InputController : MonoBehaviour
 
             var cameraCenter = camToTrack.transform.position;
 
-            if (Physics.Raycast(cameraCenter, camToTrack.transform.forward, out hit, 100))
+            if (Physics.Raycast(cameraCenter, camToTrack.transform.forward, out hit2, 100))
             {
  
-                if (hit.transform.gameObject == inputPortal)
+                if (hit2.transform.gameObject == inputPortal)
                 {
  
-                    Debug.DrawLine(cameraCenter, hit.point, Color.white, 120f);
+                    Debug.DrawLine(cameraCenter, hit2.point, Color.white, 120f);
 
-                    Vector3 fromCamToPortal = hit.point - cameraCenter;
+                    Vector3 fromCamToPortal = hit2.point - cameraCenter;
 
-                    Vector3 portalCenterPointertoHit = hit.point - hit.transform.gameObject.transform.position;
+                    Vector3 portalCenterPointertoHit = hit2.point - hit2.transform.gameObject.transform.position;
 
-                    Quaternion rotation_difference = outputPortal.transform.rotation * Quaternion.Inverse(hit.transform.gameObject.transform.rotation);
+                    Quaternion rotation_difference = outputPortal.transform.rotation * Quaternion.Inverse(hit2.transform.gameObject.transform.rotation);
 
                     Vector3 portalCenterPointerToExit = outputPortal.transform.position + (rotation_difference * portalCenterPointertoHit);
 
